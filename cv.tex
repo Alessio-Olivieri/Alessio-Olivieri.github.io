@@ -1,106 +1,137 @@
-% Full one-page CV: detailed metrics and academic experience preserved.
-\documentclass[9pt,a4paper]{extarticle}
+% Alessio Olivieri - one-page engineering resume, revised 12 October 2026.
+% Compile: latexmk -pdf cv.tex (standard TeX Live / Overleaf).
+% Six selected project entries; GPU thesis consolidated into Education.
+% Reverse chronological order within each dated section, ongoing roles first.
+% Public team projects are separate from personal adaptations and forks.
+%
+% Evidence notes (not printed):
+% Education, tutoring and spoken languages: original user-supplied cv.pdf.
+% Plum Juice: authored weekly_update_22-11.md describes a 32-core cluster;
+% this is a technical-writing contribution, not a claim of cluster ownership.
+% Surgical: supplied context/report, July 2026; 21 configurations, 40 held-out
+% videos. 92.12% accuracy and 88.36% segmental F1 are TEAM results from DIFFERENT
+% models. No individual claim for ResNet50 fine-tuning or every architecture.
+% Literary translation: MNLP-Homework2, June 2025; 97 human-rated passages,
+% Mixtral ~3.4948/5 vs OPUS ~2.2062/5. October 2026 README updates excluded.
+% Fire: May 2023 team repo. 0.1 -> 60 FPS is from the user's original CV;
+% adaptive background subtraction and XGBoost confirmed in the repository.
+% Gear: Sep 2026 start from provided project timeline; public Oct 2026 fork.
+% Initial pairing still requires Samsung software; no upstream acceptance claim.
+% TFE-GNN: May-Oct 2026, public-release branch; one fixed flow-disjoint split,
+% three training seeds. No capture-independent generalization is established.
+% ViT: May-Jun 2025; 41/48 heads pruned (85.4%); Ryzen 7 4700U CPU log
+% 6.55848 -> 3.54994 seconds (~1.85x). 55.24% is validation accuracy after
+% training the sparse architecture from scratch on 58 animal classes.
+% Swing: 2024 thesis, MSCCLang contributions and visualization; Leonardo
+% benchmarking supported by original CV. Unspecified 50-200% gains omitted.
+%
+% Guidance consulted:
+% Google official resume post: linkedin.com/posts/google_how-to-apply-for-a-job-at-google-activity-7297670002780868610-FI-Z
+% Microsoft recruiters: news.microsoft.com/life/make-resume-shine/
+% Yangshun / Tech Interview Handbook: techinterviewhandbook.org/resume/
+%
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=16mm,right=16mm,top=13mm,bottom=13mm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{tgpagella}
-\usepackage{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[english]{babel}
 \usepackage{microtype}
-\usepackage{enumitem}
-\usepackage{titlesec}
 \usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{needspace}
 \usepackage{hyperref}
-\geometry{left=0.50in,right=0.50in,top=0.38in,bottom=0.38in}
-\definecolor{accent}{HTML}{14566D}
-\definecolor{ink}{HTML}{182836}
-\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,pdfauthor={Alessio Olivieri},pdftitle={Alessio Olivieri - Full Curriculum Vitae}}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\definecolor{muted}{HTML}{454545}
+\definecolor{linecolor}{HTML}{B6B6B6}
+\hypersetup{hidelinks,
+  pdftitle={Alessio Olivieri - AI and Software Engineering},
+  pdfauthor={Alessio Olivieri},
+  pdfsubject={One-page engineering curriculum vitae},
+  pdfkeywords={Python, PyTorch, Machine Learning, NLP, GPU, C++, Android}}
+\pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
 \raggedright
-\hyphenpenalty=10000\exhyphenpenalty=10000
-\setlist[itemize]{leftmargin=1.3em,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
-\titleformat{\section}{\fontfamily{phv}\selectfont\bfseries\fontsize{11.3}{12.6}\color{ink}}{}{0pt}{}[\color{accent}\titlerule]
-\titlespacing*{\section}{0pt}{5pt}{2.5pt}
-\newcommand{\project}[2]{\par\vspace{3pt}{\bfseries #1}\enspace{\scriptsize #2}\par\vspace{0pt}}
-\newcommand{\experience}[2]{\textbf{#1}\hfill{\footnotesize\color{accent}#2}\par}
-\newcommand{\sublink}[2]{\href{#1}{\color{accent}#2}}
-\pagestyle{empty}
+\AtBeginDocument{\fontsize{11}{14}\selectfont}
+\setlist[itemize]{leftmargin=12pt,label=\textbullet,
+  itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt}
+\newcommand{\cvsection}[1]{%
+  \par\addvspace{9pt}\needspace{42pt}%
+  {\fontsize{11.2}{14}\selectfont\bfseries\MakeUppercase{#1}}\par
+  \vspace{2pt}{\color{linecolor}\hrule height .4pt}\vspace{4pt}}
+\newcommand{\entry}[2]{%
+  \par\addvspace{5pt}\needspace{38pt}%
+  {\bfseries #1}\hfill{\fontsize{9.6}{12}\selectfont\color{muted}\mbox{#2}}\par}
+\newcommand{\project}[3]{%
+  \entry{\href{#1}{#2}}{#3}}
+\newcommand{\outcome}[1]{%
+  \begin{itemize}\item #1\end{itemize}}
+
 \begin{document}
-\fontsize{10.3}{11.5}\selectfont
-\begin{center}
-{\fontfamily{phv}\selectfont\fontsize{21}{22}\bfseries Alessio Olivieri}\par\vspace{2pt}
-{\footnotesize Rome, Italy \quad | \quad \href{mailto:olivieri.1973323@studenti.uniroma1.it}{olivieri.1973323@studenti.uniroma1.it} \quad | \quad \sublink{https://www.linkedin.com/in/alessio-olivieri/}{LinkedIn} \quad | \quad \sublink{https://github.com/Alessio-Olivieri}{GitHub} \quad | \quad \sublink{https://alessio-olivieri.github.io/}{Portfolio}}
-\end{center}
-\vspace{-9pt}
-\section{Education}
-\textbf{MSc in Artificial Intelligence \& Robotics -- Sapienza University of Rome} \hfill {\footnotesize Jan 2025 -- May 2027 (expected)}\\[-1pt]
-\textbf{Current average: 29/30.} Coursework: Robotics, Machine Learning, AI, Deep Learning, NLP, Neural Networks, Optimization, HPC, Mobile \& Medical Robotics.\\[1pt]
-\textbf{BSc in Applied Computer Science \& Artificial Intelligence -- Sapienza} \hfill {\footnotesize Oct 2020 -- Dec 2024}\\[-1pt]
-\textbf{Final grade: 101/110.} Coursework: Python, Java, R, Linear Algebra, Physics, Calculus I--II, Machine Learning, Computer Vision, Data Analysis, Cybersecurity, OS, Networks, Linear Programming, Algorithms, Probability, Statistics, Discrete Mathematics.
+{\fontsize{25}{28}\selectfont\bfseries Alessio Olivieri}\par
+\vspace{5pt}
+{\fontsize{9.5}{12}\selectfont
+Rome, Italy \enspace|\enspace
+\href{mailto:olivieri.1973323@studenti.uniroma1.it}{olivieri.1973323@studenti.uniroma1.it}\par
+\vspace{1.5pt}
+\href{https://github.com/Alessio-Olivieri}{github.com/Alessio-Olivieri}
+\enspace|\enspace
+\href{https://www.linkedin.com/in/alessio-olivieri/}{linkedin.com/in/alessio-olivieri}
+\enspace|\enspace
+\href{https://alessio-olivieri.github.io/}{Portfolio}}
 
-\section{Research \& Technical Projects}
-\project{Vision Transformer Pruning via Mechanistic Interpretability}{\sublink{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer}{code} | \sublink{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/presentation.pdf}{slides}}
-\begin{itemize}
-\item Implemented ACDC-style causal analysis and activation patching in \textbf{PyTorch} to identify redundant components in a ViT.
-\item Pruned \textbf{85\% of attention heads and 94\% of the computation graph}; retrained the sparse architecture from scratch, achieving \textbf{2$\times$ faster CPU inference} with a \textbf{9\% accuracy drop}.
-\end{itemize}
+\cvsection{Education}
+\entry{MSc, Artificial Intelligence \& Robotics}{Jan 2025 -- May 2027 (expected)}
+Sapienza University of Rome \enspace|\enspace Average: \textbf{29/30}.
+\entry{BSc, Applied Computer Science \& Artificial Intelligence}{Oct 2020 -- Dec 2024}
+Sapienza University of Rome \enspace|\enspace Final grade: \textbf{101/110}.\par
+\textbf{Thesis (2024):}
+\href{https://github.com/Alessio-Olivieri/msccl-tools}{Enabled Swing AllReduce on GPUs with MSCCLang/NCCL; benchmarked on Leonardo.}
 
-\project{NCCL Swing Collective Algorithm -- Bachelor's Thesis}{\sublink{https://github.com/Alessio-Olivieri/msccl-tools}{code}}
-\begin{itemize}
-\item Implemented a GPU collective-communication algorithm using \textbf{NCCL / MSCCLang} and benchmarked multi-GPU execution, including on the \textbf{Leonardo supercomputer}.
-\item Measured speedups averaging \textbf{50\%} and reaching \textbf{200\%} in tested torus-network configurations.
-\end{itemize}
+\cvsection{Experience}
+\entry{Technical Writer \& Team Member -- \href{https://plum-juice-project.github.io/plum-io/}{Plum Juice}}{Sep 2024 -- Present}
+Published technical documentation of a \textbf{32-core Raspberry Pi cluster}, covering MPI/Slurm integration, failures and scaling trade-offs.
 
-\project{Encrypted Network Traffic Classification -- Research}{\sublink{https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release}{code}}
-\begin{itemize}
-\item Evaluated graph-based ML with \textbf{PyTorch Geometric} on ISCX-VPN: \textbf{31 captures, 1,674 eligible samples, 6 classes}; used flow-disjoint splits, randomized/header-only ablations, and \textbf{3 seeds}.
-\item Real-input baseline: \textbf{92.53\% $\pm$ 1.51 accuracy}, macro-F1 \textbf{0.9168 $\pm$ 0.0165}; randomized: \textbf{73.60\% $\pm$ 14.95}; header-only: \textbf{79.33\% $\pm$ 8.62}. Audited capture provenance and documented why capture-independent six-class validation was unavailable.
-\end{itemize}
+\entry{Linear Algebra Tutor -- Sapienza University of Rome}{Sep 2025 -- Feb 2026}
+Provided supplementary Linear Algebra classes for the Applied Computer Science \& AI BSc programme.
 
-\project{Gadgetbridge / Samsung Gear S3 Android--Tizen Support}{\sublink{https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3}{code}}
-\begin{itemize}
-\item Independently built Bluetooth / Samsung Accessory Protocol integration for the Gear S3: phone notifications, replies, contacts, reconnect handling and action-ID stability.
-\item Debugged traffic and Android lifecycle failures on physical devices; implemented automated regression tests (\textbf{65 plus 12 additional tests} passed in the recorded validation).
-\end{itemize}
+\entry{Programming Tutor}{Nov 2023 -- Jan 2024}
+Improved programming materials using feedback from students in engineering, AI, statistics and economics.
 
-\project{Video Action Segmentation}{University team project}
-\begin{itemize}
-\item Compared \textbf{MS-TCN, BiGRU and MS-CBiGRU} for frame-level action labeling; best \textbf{macro-F1 $\approx$ 0.83} and \textbf{Jaccard $\approx$ 0.71}.
-\end{itemize}
+\cvsection{Contributions to Public Projects}
+\project{https://github.com/Sapienza-Corvino/Sapienza_MR_SurgicalWorkflowAnalysis}
+  {Surgical Workflow Analysis -- four-person research team}{Jul 2026}
+\outcome{Reached \textbf{92.12\% frame accuracy} and \textbf{88.36\% mean segmental F1} with different models in a 21-configuration PyTorch benchmark on Cholec80; compared temporal quality on \textbf{40 held-out videos}.}
 
-\project{Parallel Multi-Layer Perceptron (MLP)}{\sublink{https://github.com/tintando/multiprocessing-NN}{code}}
-\begin{itemize}
-\item Built an MLP from scratch in \textbf{C/Pthreads}; measured approximately \textbf{1,000\% speedup with 10 CPU cores}. Implemented a \textbf{CUDA} version for parallel execution.
-\end{itemize}
+\project{https://github.com/Alessio-Olivieri/MNLP-Homework2}
+  {Literary Translation -- two-person NLP project}{Jun 2025}
+\outcome{Obtained \textbf{3.49/5 human-rated quality} with 4-bit Mixtral + LoRA versus \textbf{2.21/5} for OPUS-MT across \textbf{97 passages}; quantified agreement between human raters and LLM judges.}
 
-\project{Forest Surveillance: Real-Time AI Fire Detection -- 30L}{\sublink{https://github.com/ami-sc/fire-detection}{code} | \sublink{https://github.com/ami-sc/fire-detection/blob/main/reports/Technical_Report.pdf}{report}}
-\begin{itemize}
-\item Rewrote video processing in \textbf{NumPy}, improving throughput from \textbf{0.1 FPS to 60 FPS}; improved reported detection accuracy to \textbf{95\%} using background subtraction.
-\end{itemize}
+\project{https://github.com/ami-sc/fire-detection}
+  {Fire Detection -- computer vision team project}{May 2023}
+\outcome{Increased measured video-processing throughput from \textbf{0.1 to 60 FPS} through NumPy vectorization, enabling real-time processing with adaptive background subtraction and XGBoost.}
 
-\project{WasaPhoto -- Full-Stack Social Platform -- 30L}{\sublink{https://github.com/Alessio-Olivieri/WasaPhoto}{code}}
-\begin{itemize}
-\item Designed frontend, backend and database (\textbf{Go, Vue.js, SQLite, Docker}); built a \textbf{REST API with OpenAPI} for posts, follows and bans.
-\end{itemize}
+\cvsection{Selected Personal Projects}
+\project{https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3}
+  {Samsung Gear S3 Integration -- independent Gadgetbridge fork}{Sep 2026 -- Present}
+\outcome{Enabled \textbf{notifications, message replies and contact sync} between Android and Tizen. Resolved reconnection and notification-action failures; validated Java/Bluetooth fixes on physical devices and with regression tests.}
 
-\project{Ingredients / Recipe Network Analysis}{\sublink{https://github.com/Alessio-Olivieri/GialloZafferano-Scraping}{code} | \sublink{https://github.com/Alessio-Olivieri/GialloZafferano-Scraping/blob/main/giallozafferanodataframe.RData}{data}}
-\begin{itemize}
-\item Scraped \textbf{6,000+ recipes} from Giallo Zafferano; analyzed ingredient co-occurrence networks and identified frequently used ingredients.
-\end{itemize}
+\project{https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release}
+  {Encrypted Traffic Classification -- TFE-GNN adaptation}{May -- Oct 2026}
+\outcome{Achieved \textbf{92.53\% mean accuracy across three seeds} on one flow-disjoint split; ran controlled payload/TLS ablations on 1,674 samples and identified capture overlap that prevented independent validation.}
 
-\project{AI Orders Chatbot / Natural Language to SQL}{\sublink{https://github.com/Alessio-Olivieri/chatbot}{code} | \sublink{https://chateau.streamlit.app/}{demo}}
-\begin{itemize}
-\item Used prompt engineering with \textbf{Llama 8B / 70B} to turn user questions into \textbf{SQL queries}; deployed the interface with \textbf{Streamlit}.
-\end{itemize}
-\vspace{2pt}
-\section{Experience}
-\experience{Mathematics Tutor -- Linear Algebra, Sapienza University of Rome}{Sep 2025 -- Feb 2026}
-Delivered supplementary Linear Algebra classes alongside the main university course, supporting BSc Applied Computer Science \& Artificial Intelligence (ACSAI) students at Sapienza.\\[1pt]
-\experience{Programming Tutor}{Nov 2023 -- Jan 2024}
-Tutored engineering, AI, statistics and economics students; improved learning materials and relayed feedback to department heads.\\[1pt]
-\experience{Plum Juice -- Technical Writer \& Team Member}{Sep 2024 -- Present}
-Wrote technical articles and managed social media (\sublink{https://plum-juice-project.github.io/plum-io/}{website}).
-\section{Skills}
-\textbf{Programming:} Java, JavaScript, Python, Go, SQL, C, RISC-V, R; PyTorch, NumPy, CUDA, Pthreads, Docker, Git, Linux.\\
-\textbf{Problem solving:} Scored \textbf{30L/30} in the Python exam featuring \textbf{12 challenging LeetCode-style problems}.\\
+\project{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer}
+  {Vision Transformer Pruning -- mechanistic interpretability}{May -- Jun 2025}
+\outcome{Cut \textbf{85\% of attention heads} and accelerated CPU inference by \textbf{1.85\texttimes{}} using activation patching; retrained the sparse architecture to 55.24\% validation accuracy on 58 Tiny ImageNet classes.}
+
+\cvsection{Skills}
+\textbf{Programming:} Python, C/C++, Java, Go, SQL, JavaScript, R.\par
+\textbf{ML / systems:} PyTorch, PyTorch Geometric, Hugging Face, NumPy, CUDA, Linux, Git, Docker.\par
 \textbf{Languages:} Italian (C2), English (C2), Spanish (A2), Polish (A2).
 \end{document}
