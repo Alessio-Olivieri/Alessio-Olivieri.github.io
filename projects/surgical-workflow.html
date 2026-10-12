@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b111a"><title>Surgical workflow analysis — Alessio Olivieri</title><meta name="description" content="Our four-person team compared 21 temporal-model and feature configurations on Cholec80. The best frame classifier and the best temporal segmenter were different models—a distinction that changed how we evaluated the result.">
+<link rel="canonical" href="https://alessio-olivieri.github.io/projects/surgical-workflow.html"><meta property="og:type" content="website"><meta property="og:title" content="Surgical workflow analysis — Alessio Olivieri"><meta property="og:description" content="Our four-person team compared 21 temporal-model and feature configurations on Cholec80. The best frame classifier and the best temporal segmenter were different models—a distinction that changed how we evaluated the result."><meta property="og:url" content="https://alessio-olivieri.github.io/projects/surgical-workflow.html"><meta property="og:image" content="https://alessio-olivieri.github.io/assets/projects/social-preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/showcase.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="nav"><a class="logo" href="../index.html" aria-label="Alessio Olivieri home">AO<span>.</span></a>
+<nav class="navlinks" aria-label="Primary"><a href="../projects.html" aria-current="page">Projects</a><a class="about-nav" href="../index.html#about">About</a><a href="../cv.pdf">Résumé</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a></nav>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span>Surgical workflow analysis</span></nav>
+<section class="page-hero case-hero"><span class="eyebrow">COMPUTER VISION · TEAM RESEARCH</span>
+<h1>Recognizing surgical phases without losing the sequence.</h1>
+<p class="lead">Our four-person team compared 21 temporal-model and feature configurations on Cholec80. The best frame classifier and the best temporal segmenter were different models—a distinction that changed how we evaluated the result.</p>
+<div class="case-meta"><time datetime="2026-07">Jul 2026</time><span>Four-person Medical Robotics project</span></div>
+<div class="chips"><span class="chip">PyTorch</span><span class="chip">Temporal segmentation</span><span class="chip">Cholec80</span></div>
+<div class="actions"><a class="button" href="https://github.com/Sapienza-Corvino/Sapienza_MR_SurgicalWorkflowAnalysis">Explore the source ↗</a><a class="button ghost" href="../cv.pdf">View CV ↗</a></div>
+</section>
+<div class="metric-strip" aria-label="Project highlights">
+<div><strong>21</strong><span>model × feature configurations</span></div>
+<div><strong>40 videos</strong><span>held out for the final test</span></div>
+<div><strong>88.36%</strong><span>best mean segmental F1, achieved by SF-TMN</span></div>
+</div>
+<article class="story" aria-label="Project case study">
+<h2>Recognize the workflow, not just individual frames</h2>
+<p>A model can label most frames correctly and still fragment a surgical procedure into implausible short phases. Our benchmark compared frame-level classification with sequence and segment quality on Cholec80, using whole videos as the unit of separation.</p>
+<p>We evaluated seven model variants against three ResNet50 feature sources: recurrent models, a windowed Transformer, multi-task MS-TCN and SF-TMN with an ASFormer backbone.</p>
+<figure class="figure  "><a class="figure-image" href="../assets/projects/surgical-comparison.svg" target="_blank" rel="noopener" aria-label="Open figure at full size: MS-TCN has 92.12% frame accuracy and 79.65% mean segmental F1. SF-TMN has 91.31% accuracy and 88.36% mean segmental F1."><img src="../assets/projects/surgical-comparison.svg" width="649" height="363" alt="MS-TCN has 92.12% frame accuracy and 79.65% mean segmental F1. SF-TMN has 91.31% accuracy and 88.36% mean segmental F1." loading="lazy" decoding="async"></a>
+<figcaption>Two configurations from the team benchmark. The highest frame-accuracy model was not the strongest temporal segmenter. Mean segmental F1 averages F1 at temporal IoU thresholds 10%, 25% and 50%.<span class="zoom-hint">Select the figure to view it at full size.</span></figcaption>
+</figure>
+<details class="data-details">
+<summary>View the exact values</summary>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th scope="col">Configuration</th><th scope="col">Frame accuracy</th><th scope="col">Mean segmental F1</th></tr>
+</thead>
+<tbody>
+<tr><td>MS-TCN 11L · teammates features</td><td>92.12%</td><td>79.65%</td></tr>
+<tr><td>SF-TMN · original features</td><td>91.31%</td><td>88.36%</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<h2>My contribution within the team</h2>
+<p>I contributed to the benchmark and evaluation protocol, analyzed the comparison of temporal architectures and feature sources, and presented the quantitative results, rankings and trade-offs. Feature extraction and model development were shared work; the reported performance belongs to the four-person project.</p>
+<p class="source-note">Team: Christian Corvino, Giorgia Chiaro, Marta Cudia and Alessio Olivieri. Sapienza University of Rome, Medical Robotics, July 2026.</p>
+<h2>A held-out protocol</h2>
+<ul>
+<li><strong>80 procedures, 184,578 sampled frames:</strong> one frame per second, with seven surgical phase labels.</li>
+<li><strong>32 training / 8 validation / 40 test videos:</strong> entire videos remain separate between partitions.</li>
+<li><strong>Validation-led selection:</strong> checkpoints, losses and postprocessing are selected using validation, followed by the final held-out test.</li>
+</ul>
+<h2>The result that changed the ranking</h2>
+<p>MS-TCN with 11 layers and the teammates’ features reached <strong>92.12% frame accuracy</strong>. SF-TMN with original features reached <strong>88.36% mean segmental F1</strong> and an <strong>86.69% Edit score</strong>. The difference shows why the evaluation has to match the intended use of a temporal model.</p>
+<div class="callout">
+<p><strong>Research scope.</strong> These are offline benchmark results at one random seed. Several models use future context; the project does not establish real-time operation or clinical deployment.</p>
+</div>
+<p class="source-note"><a href="https://github.com/Sapienza-Corvino/Sapienza_MR_SurgicalWorkflowAnalysis/tree/main/report">Full report ↗</a> · <a href="https://github.com/Sapienza-Corvino/Sapienza_MR_SurgicalWorkflowAnalysis/tree/main/presentation">Team presentation ↗</a></p>
+</article>
+<nav class="case-end" aria-label="More projects"><a href="../projects.html">← All projects</a><a href="vision-transformer.html">Next: Pruning Vision Transformers →</a></nav>
+</main>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="../projects.html">Projects</a> · <a href="https://github.com/Alessio-Olivieri">GitHub</a> · <a href="../cv.pdf">CV</a></span></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "vit": {
+    "source": "https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/data/benchmark%20ryzen74700u.txt",
+    "hardware": "AMD Ryzen 7 4700U CPU",
+    "timing": "Average duration of the evaluation workload over 10 runs; before retraining",
+    "conditions": [
+      {"label": "Unpruned", "tau": 0.0001, "heads_removed": 0, "seconds": 6.558480310440063, "accuracy": 60.06896551724138},
+      {"label": "Moderate pruning", "tau": 0.003, "heads_removed": 18, "seconds": 5.169708943367004, "accuracy": 56.10344827586207},
+      {"label": "Sparse circuit", "tau": 0.01, "heads_removed": 41, "seconds": 3.5499412059783935, "accuracy": 31.82758620689655}
+    ],
+    "retrained_validation_accuracy": 55.24,
+    "retrained_accuracy_source": "https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/readme.md"
+  },
+  "traffic": {
+    "source": "https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release",
+    "protocol": "Mean and sample SD over seeds 32, 42, 52 on one fixed flow-disjoint split; not a capture-independent evaluation",
+    "conditions": [
+      {"label": "Real payload", "accuracy": 92.53, "sd": 1.51},
+      {"label": "Full payload randomized", "accuracy": 73.60, "sd": 14.95},
+      {"label": "Header only", "accuracy": 79.33, "sd": 8.62},
+      {"label": "TLS-GCM randomized", "accuracy": 94.80, "sd": 1.06}
+    ]
+  },
+  "surgery": {
+    "source": "https://github.com/Sapienza-Corvino/Sapienza_MR_SurgicalWorkflowAnalysis",
+    "protocol": "Cholec80; 40 held-out videos; seed 42. Different model-feature configurations; raw outputs for both.",
+    "conditions": [
+      {"label": "MS-TCN · 11 layers", "feature_source": "teammates", "accuracy": 92.12, "segmental_f1": 79.65},
+      {"label": "SF-TMN", "feature_source": "original", "accuracy": 91.31, "segmental_f1": 88.36}
+    ]
+  }
+}

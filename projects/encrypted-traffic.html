@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b111a"><title>Encrypted traffic, tested beyond accuracy — Alessio Olivieri</title><meta name="description" content="Reached 92.53% mean accuracy on a fixed flow-disjoint split, then used payload randomization and capture-provenance analysis to investigate what the classifier had actually learned.">
+<link rel="canonical" href="https://alessio-olivieri.github.io/projects/encrypted-traffic.html"><meta property="og:type" content="website"><meta property="og:title" content="Encrypted traffic, tested beyond accuracy — Alessio Olivieri"><meta property="og:description" content="Reached 92.53% mean accuracy on a fixed flow-disjoint split, then used payload randomization and capture-provenance analysis to investigate what the classifier had actually learned."><meta property="og:url" content="https://alessio-olivieri.github.io/projects/encrypted-traffic.html"><meta property="og:image" content="https://alessio-olivieri.github.io/assets/projects/social-preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/showcase.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="nav"><a class="logo" href="../index.html" aria-label="Alessio Olivieri home">AO<span>.</span></a>
+<nav class="navlinks" aria-label="Primary"><a href="../projects.html" aria-current="page">Projects</a><a class="about-nav" href="../index.html#about">About</a><a href="../cv.pdf">Résumé</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a></nav>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span>Encrypted traffic, tested beyond accuracy</span></nav>
+<section class="page-hero case-hero"><span class="eyebrow">GRAPH ML · CYBERSECURITY</span>
+<h1>What does encrypted traffic actually reveal?</h1>
+<p class="lead">Reached 92.53% mean accuracy on a fixed flow-disjoint split, then used payload randomization and capture-provenance analysis to investigate what the classifier had actually learned.</p>
+<div class="case-meta"><time datetime="2026-10">May – Oct 2026</time><span>Individual research adaptation of TFE-GNN</span></div>
+<div class="chips"><span class="chip">PyTorch Geometric</span><span class="chip">GraphSAGE</span><span class="chip">Experimental design</span></div>
+<div class="actions"><a class="button" href="https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release">Explore the source ↗</a><a class="button ghost" href="../cv.pdf">View CV ↗</a></div>
+</section>
+<div class="metric-strip" aria-label="Project highlights">
+<div><strong>92.53%</strong><span>mean accuracy; ±1.51 percentage points across seeds</span></div>
+<div><strong>1,674</strong><span>samples across six traffic classes</span></div>
+<div><strong>3 seeds</strong><span>one fixed flow-disjoint split</span></div>
+</div>
+<article class="story" aria-label="Project case study">
+<h2>A high score is the start of the investigation</h2>
+<p>The research question was whether packet payloads help classify encrypted traffic because of ciphertext byte values, or because the payload also contains lengths, framing, cleartext and other structure.</p>
+<p>I adapted the TFE-GNN architecture to PyTorch Geometric and evaluated six ISCXVPN2016 traffic classes. The model uses separate header and payload graphs, GraphSAGE encoders, cross-gated fusion and a bidirectional LSTM. The architecture originates with <a href="https://github.com/ViktorAxelsen/TFE-GNN">Zhang et al., WWW 2023</a>.</p>
+<figure class="figure  "><a class="figure-image" href="../assets/projects/traffic-ablation.svg" target="_blank" rel="noopener" aria-label="Open figure at full size: Accuracy over three training seeds: real payload 92.53%, full randomization 73.60%, header only 79.33%, TLS randomization 94.80%."><img src="../assets/projects/traffic-ablation.svg" width="639" height="385" alt="Accuracy over three training seeds: real payload 92.53%, full randomization 73.60%, header only 79.33%, TLS randomization 94.80%." loading="lazy" decoding="async"></a>
+<figcaption>Replotted from the published result table. Error bars show sample standard deviation across three training seeds on the same split—not confidence intervals.<span class="zoom-hint">Select the figure to view it at full size.</span></figcaption>
+</figure>
+<details class="data-details">
+<summary>View the exact values</summary>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th scope="col">Condition</th><th scope="col">Accuracy</th><th scope="col">Sample SD</th></tr>
+</thead>
+<tbody>
+<tr><td>Real payload</td><td>92.53%</td><td>1.51 pp</td></tr>
+<tr><td>Full payload randomized</td><td>73.60%</td><td>14.95 pp</td></tr>
+<tr><td>Header only</td><td>79.33%</td><td>8.62 pp</td></tr>
+<tr><td>TLS-GCM randomized</td><td>94.80%</td><td>1.06 pp</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<h2>My contribution</h2>
+<p>I connected the adapted model to packet extraction and graph construction, introduced controlled payload and TLS randomization experiments, and traced predictions back to capture provenance. Saved predictions, split definitions, result verification and regression tests make the analysis inspectable without retraining.</p>
+<h2>What the controls revealed</h2>
+<p>Replacing complete payloads reduced average accuracy and increased variability. Randomizing only conservatively identified TLS 1.2 AES-GCM ciphertext did not reduce the measured score. That supports a narrower conclusion than “the model understands encryption”: useful payload information is not necessarily in the ciphertext values.</p>
+<div class="callout">
+<p><strong>Coverage matters.</strong> The TLS intervention changed 17.97% of retained payload bytes and touched 85 of 250 test samples. Unsupported bytes and protocol structure remained. This is an observed contrast, not proof that ciphertext never matters.</p>
+</div>
+<h2>The evaluation limit I found</h2>
+<p>The 1,172/252/250 train/validation/test split is flow-disjoint, but its partitions share capture sources. The capture audit found too few independent acquisition groups to support a defensible six-class capture-independent evaluation. Three training seeds measure training variability; they do not create independent test data.</p>
+<p><strong>The outcome is both a working classifier and a documented boundary on its claims.</strong> No capture-independent generalization score is reported.</p>
+<p class="source-note"><a href="https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release/results">Saved results and provenance ↗</a> · <a href="https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release/experiments">Experimental protocol ↗</a></p>
+</article>
+<nav class="case-end" aria-label="More projects"><a href="../projects.html">← All projects</a><a href="surgical-workflow.html">Next: Surgical workflow analysis →</a></nav>
+</main>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="../projects.html">Projects</a> · <a href="https://github.com/Alessio-Olivieri">GitHub</a> · <a href="../cv.pdf">CV</a></span></footer>
+</div>
+</body>
+</html>

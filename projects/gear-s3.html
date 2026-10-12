@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b111a"><title>Samsung Gear S3 integration — Alessio Olivieri</title><meta name="description" content="Enabled core communication between an Android phone and a Samsung Gear S3: notification delivery, interactive replies and contact synchronization, with fixes for reconnects and notification actions.">
+<link rel="canonical" href="https://alessio-olivieri.github.io/projects/gear-s3.html"><meta property="og:type" content="website"><meta property="og:title" content="Samsung Gear S3 integration — Alessio Olivieri"><meta property="og:description" content="Enabled core communication between an Android phone and a Samsung Gear S3: notification delivery, interactive replies and contact synchronization, with fixes for reconnects and notification actions."><meta property="og:url" content="https://alessio-olivieri.github.io/projects/gear-s3.html"><meta property="og:image" content="https://alessio-olivieri.github.io/assets/projects/social-preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/showcase.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="nav"><a class="logo" href="../index.html" aria-label="Alessio Olivieri home">AO<span>.</span></a>
+<nav class="navlinks" aria-label="Primary"><a href="../projects.html" aria-current="page">Projects</a><a class="about-nav" href="../index.html#about">About</a><a href="../cv.pdf">Résumé</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a></nav>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span>Samsung Gear S3 integration</span></nav>
+<section class="page-hero case-hero"><span class="eyebrow">ANDROID · OPEN SOURCE</span>
+<h1>A second life for the Samsung Gear S3.</h1>
+<p class="lead">Enabled core communication between an Android phone and a Samsung Gear S3: notification delivery, interactive replies and contact synchronization, with fixes for reconnects and notification actions.</p>
+<div class="case-meta"><time datetime="2026-09">Sep 2026 – Present</time><span>Independent Gadgetbridge fork</span></div>
+<div class="chips"><span class="chip">Java</span><span class="chip">Android</span><span class="chip">Bluetooth / SAP</span></div>
+<div class="actions"><a class="button" href="https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3">Explore the source ↗</a><a class="button ghost" href="../cv.pdf">View CV ↗</a></div>
+</section>
+<div class="metric-strip" aria-label="Project highlights">
+<div><strong>3</strong><span>core features: notifications, replies and contact sync</span></div>
+<div><strong>On device</strong><span>tested with physical hardware</span></div>
+<div><strong>Java / SAP</strong><span>Android implementation and Bluetooth protocol work</span></div>
+</div>
+<article class="story" aria-label="Project case study">
+<h2>Useful again, through an open Android client</h2>
+<p>The Gear S3 still has capable hardware, but its companion software ties everyday use to a vendor ecosystem. I developed an Android-side integration in an independent Gadgetbridge fork to recover practical features on the watch.</p>
+<figure class="figure  "><a class="figure-image" href="../assets/projects/gear-integration.svg" target="_blank" rel="noopener" aria-label="Open figure at full size: Diagram of Android notifications, watch replies and contact sync over Bluetooth and SAP."><img src="../assets/projects/gear-integration.svg" width="960" height="480" alt="Diagram of Android notifications, watch replies and contact sync over Bluetooth and SAP." loading="lazy" decoding="async"></a>
+<figcaption>Conceptual protocol illustration of the implemented feature paths; this is not an app screenshot.<span class="zoom-hint">Select the figure to view it at full size.</span></figcaption>
+</figure>
+<h2>My contribution</h2>
+<p>I implemented and debugged device communication and connection management, notification delivery, interactive notification actions and replies, and contact synchronization. The work crosses the Android notification lifecycle and the watch’s Bluetooth/SAP protocol behavior.</p>
+<ul>
+<li><strong>Stable reconnects:</strong> investigated lifecycle failures when a connection drops and is re-established.</li>
+<li><strong>Working actions:</strong> corrected notification action IDs and reply handling so that a visible notification can also be acted on.</li>
+<li><strong>Contact synchronization:</strong> resolved synchronization behavior and duplicate-contact issues.</li>
+</ul>
+<h2>How I checked it</h2>
+<p>Exercised the integration with physical devices and added regression checks around protocol and notification behavior. This matters because a successful connection is only the first step: replies, reconnects and state synchronization need to keep working after that.</p>
+<div class="callout">
+<p><strong>Current scope.</strong> This is experimental, independent development on top of Gadgetbridge. It has not been merged upstream, and support across firmware versions and all watch features is not established. Initial setup can still depend on Samsung’s pairing flow.</p>
+</div>
+<h2>Code and attribution</h2>
+<p>The original Gadgetbridge project provides the base application. My fork publishes the Gear S3 work separately and preserves upstream attribution and licensing.</p>
+<p><a href="https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3/tree/master/app/src/main/java/nodomain/freeyourgadget/gadgetbridge/service/devices/samsung/gear">Gear S3 implementation ↗</a> · <a href="https://codeberg.org/Freeyourgadget/Gadgetbridge">Original Gadgetbridge project ↗</a></p>
+</article>
+<nav class="case-end" aria-label="More projects"><a href="../projects.html">← All projects</a><a href="encrypted-traffic.html">Next: Encrypted traffic, tested beyond accuracy →</a></nav>
+</main>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="../projects.html">Projects</a> · <a href="https://github.com/Alessio-Olivieri">GitHub</a> · <a href="../cv.pdf">CV</a></span></footer>
+</div>
+</body>
+</html>

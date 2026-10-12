@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b111a"><title>Swing AllReduce on GPUs — Alessio Olivieri</title><meta name="description" content="Brought the Swing collective algorithm to GPUs through MSCCLang and NCCL, and built a visual debugging tool for communication schedules. The thesis connected algorithm design with the details that determine actual GPU performance.">
+<link rel="canonical" href="https://alessio-olivieri.github.io/projects/swing-allreduce.html"><meta property="og:type" content="website"><meta property="og:title" content="Swing AllReduce on GPUs — Alessio Olivieri"><meta property="og:description" content="Brought the Swing collective algorithm to GPUs through MSCCLang and NCCL, and built a visual debugging tool for communication schedules. The thesis connected algorithm design with the details that determine actual GPU performance."><meta property="og:url" content="https://alessio-olivieri.github.io/projects/swing-allreduce.html"><meta property="og:image" content="https://alessio-olivieri.github.io/assets/projects/social-preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/showcase.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="nav"><a class="logo" href="../index.html" aria-label="Alessio Olivieri home">AO<span>.</span></a>
+<nav class="navlinks" aria-label="Primary"><a href="../projects.html" aria-current="page">Projects</a><a class="about-nav" href="../index.html#about">About</a><a href="../cv.pdf">Résumé</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a></nav>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span>Swing AllReduce on GPUs</span></nav>
+<section class="page-hero case-hero"><span class="eyebrow">HPC · BACHELOR’S THESIS</span>
+<h1>Making GPU communication visible—and debuggable.</h1>
+<p class="lead">Brought the Swing collective algorithm to GPUs through MSCCLang and NCCL, and built a visual debugging tool for communication schedules. The thesis connected algorithm design with the details that determine actual GPU performance.</p>
+<div class="case-meta"><time datetime="2024-12">Sep – Dec 2024</time><span>Individual thesis implementation</span></div>
+<div class="chips"><span class="chip">MSCCLang</span><span class="chip">NCCL</span><span class="chip">Python / igraph</span></div>
+<div class="actions"><a class="button" href="https://github.com/Alessio-Olivieri/msccl-tools">Explore the source ↗</a><a class="button ghost" href="../cv.pdf">View CV ↗</a></div>
+</section>
+<div class="metric-strip" aria-label="Project highlights">
+<div><strong>GPU</strong><span>Swing AllReduce implementation</span></div>
+<div><strong>DAG</strong><span>chunk movement and operation-fusion visualization</span></div>
+<div><strong>Leonardo</strong><span>HPC benchmarking environment</span></div>
+</div>
+<article class="story" aria-label="Project case study">
+<h2>From a collective algorithm to executable GPU operations</h2>
+<p>Distributed training relies on collective communication to combine results across devices. My bachelor’s thesis implemented Swing AllReduce using MSCCLang, a Python-embedded language that expresses communication through chunk copy and reduction operations and lowers them for execution through MSCCL/NCCL.</p>
+<p>The Swing algorithm itself is prior research. My contribution was the GPU implementation and tooling for understanding its execution, with experiments in the Leonardo HPC environment.</p>
+<h2>My contribution: make the instruction graph readable</h2>
+<p>I built an instruction-DAG visualizer that exposes chunk movement, dependencies and operation fusion. The tool represents the schedule before and after fusion, making it possible to inspect how a high-level collective turns into GPU operations.</p>
+<figure class="figure paper "><a class="figure-image" href="../assets/projects/swing-instruction-dag.webp" target="_blank" rel="noopener" aria-label="Open figure at full size: Original thesis diagram of an AllReduce ring instruction DAG, showing data chunks and fused communication operations across four GPU ranks."><img src="../assets/projects/swing-instruction-dag.webp" width="880" height="640" alt="Original thesis diagram of an AllReduce ring instruction DAG, showing data chunks and fused communication operations across four GPU ranks." loading="lazy" decoding="async"></a>
+<figcaption>Original visualizer output from my thesis presentation, slide 25, 16 December 2024. This example is an AllReduce ring used to explain the tool; it is not the Swing schedule.<span class="zoom-hint">Select the figure to view it at full size.</span></figcaption>
+</figure>
+<p>The implementation handles grouped chunks and dependencies, then produces a graph layout with igraph. This turns a difficult-to-inspect execution schedule into something useful for debugging and explaining collective communication.</p>
+<h2>What the first benchmark showed</h2>
+<figure class="figure paper "><a class="figure-image" href="../assets/projects/swing-original-benchmark.webp" target="_blank" rel="noopener" aria-label="Open figure at full size: Original log-scale graph comparing default in-place and Swing in-place time in microseconds across message sizes. Swing is slower over most of the plotted range."><img src="../assets/projects/swing-original-benchmark.webp" width="1007" height="540" alt="Original log-scale graph comparing default in-place and Swing in-place time in microseconds across message sizes. Swing is slower over most of the plotted range." loading="lazy" decoding="async"></a>
+<figcaption>Original measured benchmark from thesis slide 35. Both axes use logarithmic scales; lower time is better. The figure is preserved rather than reconstructing unavailable raw values.<span class="zoom-hint">Select the figure to view it at full size.</span></figcaption>
+</figure>
+<p>The first Swing implementation ran on GPUs, but its operations were not fused effectively. The presentation’s benchmark shows it slower than the default in-place implementation across most of the plotted message sizes.</p>
+<div class="callout">
+<p><strong>The engineering result.</strong> Implementing the algorithm was necessary, but scheduling and fusion determined whether the communication pattern became a performance win. The visualizer helped expose that gap. This prototype is not presented as a demonstrated speedup over NCCL.</p>
+</div>
+<h2>What comes next</h2>
+<p>The thesis identifies operation fusion, a more efficient MSCCL implementation and more systematic benchmarking as the next steps. The repository contains the implementation and supporting documentation.</p>
+<p class="source-note">Source: <em>Implementation of Swing algorithm on NCCL</em>, bachelor’s thesis presentation, Alessio Olivieri, Sapienza University of Rome, December 2024. Figures extracted from the supplied presentation.</p>
+</article>
+<nav class="case-end" aria-label="More projects"><a href="../projects.html">← All projects</a><a href="gear-s3.html">Next: Samsung Gear S3 integration →</a></nav>
+</main>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="../projects.html">Projects</a> · <a href="https://github.com/Alessio-Olivieri">GitHub</a> · <a href="../cv.pdf">CV</a></span></footer>
+</div>
+</body>
+</html>

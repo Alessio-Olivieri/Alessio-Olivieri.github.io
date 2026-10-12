@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b111a"><title>Pruning Vision Transformers — Alessio Olivieri</title><meta name="description" content="Removed 85% of attention heads from a small Vision Transformer and reduced CPU evaluation time from 6.56 to 3.55 seconds. Retraining the sparse architecture from scratch recovered a reported 55.24% validation accuracy.">
+<link rel="canonical" href="https://alessio-olivieri.github.io/projects/vision-transformer.html"><meta property="og:type" content="website"><meta property="og:title" content="Pruning Vision Transformers — Alessio Olivieri"><meta property="og:description" content="Removed 85% of attention heads from a small Vision Transformer and reduced CPU evaluation time from 6.56 to 3.55 seconds. Retraining the sparse architecture from scratch recovered a reported 55.24% validation accuracy."><meta property="og:url" content="https://alessio-olivieri.github.io/projects/vision-transformer.html"><meta property="og:image" content="https://alessio-olivieri.github.io/assets/projects/social-preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/showcase.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="nav"><a class="logo" href="../index.html" aria-label="Alessio Olivieri home">AO<span>.</span></a>
+<nav class="navlinks" aria-label="Primary"><a href="../projects.html" aria-current="page">Projects</a><a class="about-nav" href="../index.html#about">About</a><a href="../cv.pdf">Résumé</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a></nav>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span>Pruning Vision Transformers</span></nav>
+<section class="page-hero case-hero"><span class="eyebrow">MECHANISTIC INTERPRETABILITY</span>
+<h1>A smaller Vision Transformer, found through causal analysis.</h1>
+<p class="lead">Removed 85% of attention heads from a small Vision Transformer and reduced CPU evaluation time from 6.56 to 3.55 seconds. Retraining the sparse architecture from scratch recovered a reported 55.24% validation accuracy.</p>
+<div class="case-meta"><time datetime="2025-06">May – Jun 2025</time><span>Individual Computer Vision project</span></div>
+<div class="chips"><span class="chip">PyTorch</span><span class="chip">Activation patching</span><span class="chip">ACDC</span></div>
+<div class="actions"><a class="button" href="https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer">Explore the source ↗</a><a class="button ghost" href="../cv.pdf">View CV ↗</a></div>
+</section>
+<div class="metric-strip" aria-label="Project highlights">
+<div><strong>41 / 48</strong><span>attention heads removed at τ = 0.01</span></div>
+<div><strong>1.85×</strong><span>CPU speedup in the recorded evaluation workload</span></div>
+<div><strong>55.24%</strong><span>reported validation accuracy after retraining</span></div>
+</div>
+<article class="story" aria-label="Project case study">
+<h2>Which parts of the network does the task need?</h2>
+<p>I trained a small Vision Transformer on 58 animal classes from Tiny ImageNet, then used an ACDC-style activation-patching procedure to find a sparse computational circuit. The discovery task groups the animals into six coarse categories.</p>
+<figure class="figure paper dataset"><a class="figure-image" href="../assets/projects/vit-dataset.webp" target="_blank" rel="noopener" aria-label="Open figure at full size: Images from the original presentation illustrating clean and corrupted input examples."><img src="../assets/projects/vit-dataset.webp" width="908" height="384" alt="Images from the original presentation illustrating clean and corrupted input examples." loading="lazy" decoding="async"></a>
+<figcaption>Example inputs from my Computer Vision presentation, slide 8, 19 June 2025. Images are part of the Tiny ImageNet experiment.<span class="zoom-hint">Select the figure to view it at full size.</span></figcaption>
+</figure>
+<h2>My contribution</h2>
+<p>I implemented a prunable ViT, the clean/corrupted input pairing, activation patching and graph utilities in PyTorch. The model has six blocks and eight attention heads per block. Each candidate edge is tested by replacing its clean activation contribution with a corrupted one; edges below a KL-divergence threshold are removed.</p>
+<figure class="figure paper "><a class="figure-image" href="../assets/projects/vit-circuit.webp" target="_blank" rel="noopener" aria-label="Open figure at full size: Sparse Vision Transformer circuit showing seven attention-head nodes and six MLP nodes connected to the output."><img src="../assets/projects/vit-circuit.webp" width="940" height="418" alt="Sparse Vision Transformer circuit showing seven attention-head nodes and six MLP nodes connected to the output." loading="lazy" decoding="async"></a>
+<figcaption>Original circuit visualization from slide 11 of my presentation. It shows the compact network found by the pruning experiment.<span class="zoom-hint">Select the figure to view it at full size.</span></figcaption>
+</figure>
+<h2>The performance trade-off</h2>
+<p>At τ = 0.01, the circuit retained <strong>7 of 48 attention heads</strong> and all MLP blocks. The recorded Ryzen 7 4700U CPU workload fell from <strong>6.56 to 3.55 seconds</strong>, a <strong>1.85× speedup</strong>. The timing is an average over ten runs of the evaluation workload, not latency per image.</p>
+<figure class="figure  "><a class="figure-image" href="../assets/projects/vit-timing.svg" target="_blank" rel="noopener" aria-label="Open figure at full size: CPU evaluation time falls from 6.56 seconds unpruned to 5.17 seconds with 18 heads removed and 3.55 seconds with 41 heads removed."><img src="../assets/projects/vit-timing.svg" width="630" height="351" alt="CPU evaluation time falls from 6.56 seconds unpruned to 5.17 seconds with 18 heads removed and 3.55 seconds with 41 heads removed." loading="lazy" decoding="async"></a>
+<figcaption>Replotted in the portfolio palette from the repository’s Ryzen 7 4700U benchmark, corresponding to the timing analysis in presentation slide 11.<span class="zoom-hint">Select the figure to view it at full size.</span></figcaption>
+</figure>
+<details class="data-details">
+<summary>View the exact values</summary>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th scope="col">Configuration</th><th scope="col">Heads removed</th><th scope="col">Workload time</th><th scope="col">Pre-retraining accuracy</th></tr>
+</thead>
+<tbody>
+<tr><td>Unpruned · τ = 0.0001</td><td>0 / 48</td><td>6.56 s</td><td>60.07%</td></tr>
+<tr><td>Moderate · τ = 0.003</td><td>18 / 48</td><td>5.17 s</td><td>56.10%</td></tr>
+<tr><td>Sparse · τ = 0.01</td><td>41 / 48</td><td>3.55 s</td><td>31.83%</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<p>Aggressive pruning reduced the initial benchmark accuracy. I then created a fresh model with the discovered sparse architecture and trained it from scratch, reaching a reported <strong>55.24% validation accuracy</strong>. That retraining result is separate from the pre-retraining timing sweep.</p>
+<div class="callout">
+<p><strong>What the experiment supports.</strong> Circuit discovery can provide a useful compact architecture, but removing components has an accuracy cost and speedup depends on the implementation and hardware. GPU speedup was not established.</p>
+</div>
+<p class="source-note"><a href="https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/data/benchmark%20ryzen74700u.txt">Raw CPU benchmark ↗</a> · <a href="https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/readme.md">Method and retraining result ↗</a></p>
+</article>
+<nav class="case-end" aria-label="More projects"><a href="../projects.html">← All projects</a><a href="swing-allreduce.html">Next: Swing AllReduce on GPUs →</a></nav>
+</main>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="../projects.html">Projects</a> · <a href="https://github.com/Alessio-Olivieri">GitHub</a> · <a href="../cv.pdf">CV</a></span></footer>
+</div>
+</body>
+</html>
