@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b111a"><title>Integrazione Samsung Gear S3 — Alessio Olivieri</title><meta name="description" content="Ho abilitato le funzioni di comunicazione principali tra un telefono Android e un Samsung Gear S3: invio delle notifiche, risposte interattive e sincronizzazione dei contatti, correggendo problemi di riconnessione e azioni sulle notifiche.">
+<link rel="canonical" href="https://alessio-olivieri.github.io/it/projects/gear-s3.html"><meta property="og:type" content="website"><meta property="og:title" content="Integrazione Samsung Gear S3 — Alessio Olivieri"><meta property="og:description" content="Ho abilitato le funzioni di comunicazione principali tra un telefono Android e un Samsung Gear S3: invio delle notifiche, risposte interattive e sincronizzazione dei contatti, correggendo problemi di riconnessione e azioni sulle notifiche."><meta property="og:url" content="https://alessio-olivieri.github.io/it/projects/gear-s3.html"><meta property="og:image" content="https://alessio-olivieri.github.io/assets/projects/social-preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/showcase.css"><link rel="alternate" hreflang="en" href="https://alessio-olivieri.github.io/projects/gear-s3.html">
+<link rel="alternate" hreflang="it" href="https://alessio-olivieri.github.io/it/projects/gear-s3.html">
+<link rel="alternate" hreflang="x-default" href="https://alessio-olivieri.github.io/projects/gear-s3.html">
+</head>
+<body><a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="wrap">
+<header class="nav"><a class="logo" href="/it/index.html" aria-label="Pagina iniziale di Alessio Olivieri">AO<span>.</span></a>
+<nav class="navlinks" aria-label="Navigazione principale"><a href="/it/projects.html" aria-current="page">Progetti</a><a class="about-nav" href="/it/index.html#about">Chi sono</a><a href="/cv.pdf">CV (EN)</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a><span class="language-switch" role="group" aria-label="Lingua"><a href="/projects/gear-s3.html" lang="en" hreflang="en" aria-label="English" title="English">EN</a><a href="/it/projects/gear-s3.html" lang="it" hreflang="it" aria-label="Italiano" title="Italiano" aria-current="true">IT</a></span></nav>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Percorso di navigazione"><a href="/it/projects.html">Progetti</a><span aria-hidden="true">/</span><span>Integrazione Samsung Gear S3</span></nav>
+<section class="page-hero case-hero"><span class="eyebrow">ANDROID · OPEN SOURCE</span>
+<h1>Una seconda vita per il Samsung Gear S3.</h1>
+<p class="lead">Ho abilitato le funzioni di comunicazione principali tra un telefono Android e un Samsung Gear S3: invio delle notifiche, risposte interattive e sincronizzazione dei contatti, correggendo problemi di riconnessione e azioni sulle notifiche.</p>
+<div class="case-meta"><time datetime="2026-09">Set 2026 – Oggi</time><span>Fork indipendente di Gadgetbridge</span></div>
+<div class="chips"><span class="chip">Java</span><span class="chip">Android</span><span class="chip">Bluetooth / SAP</span></div>
+<div class="actions"><a class="button" href="https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3">Esplora il codice ↗</a><a class="button ghost" href="/cv.pdf">Visualizza il CV (EN) ↗</a></div>
+</section>
+<div class="metric-strip" aria-label="Risultati principali del progetto">
+<div><strong>3</strong><span>funzioni principali: notifiche, risposte e sincronizzazione contatti</span></div>
+<div><strong>Sul dispositivo</strong><span>verificato con hardware fisico</span></div>
+<div><strong>Java / SAP</strong><span>implementazione Android e lavoro sul protocollo Bluetooth</span></div>
+</div>
+<article class="story" aria-label="Approfondimento del progetto">
+<h2>Di nuovo utile, con un client Android aperto</h2>
+<p>Il Gear S3 ha ancora un hardware valido, ma il software di accompagnamento ne lega l’uso quotidiano all’ecosistema del produttore. Ho sviluppato un’integrazione lato Android in un fork indipendente di Gadgetbridge per recuperare funzioni utili dell’orologio.</p>
+<figure class="figure  "><a class="figure-image" href="/assets/projects/gear-integration.it.svg" target="_blank" rel="noopener" aria-label="Apri la figura a dimensione intera: Schema di notifiche Android, risposte dall’orologio e sincronizzazione dei contatti tramite Bluetooth e SAP."><img src="/assets/projects/gear-integration.it.svg" width="960" height="480" alt="Schema di notifiche Android, risposte dall’orologio e sincronizzazione dei contatti tramite Bluetooth e SAP." loading="lazy" decoding="async"></a>
+<figcaption>Illustrazione concettuale dei percorsi del protocollo per le funzioni implementate; non è una schermata dell’app.<span class="zoom-hint">Seleziona la figura per aprirla a dimensione intera.</span></figcaption>
+</figure>
+<h2>Il mio contributo</h2>
+<p>Ho implementato e corretto la comunicazione con il dispositivo, la gestione della connessione, l’invio delle notifiche, le azioni e le risposte interattive e la sincronizzazione dei contatti. Il lavoro collega il ciclo di vita delle notifiche Android al comportamento del protocollo Bluetooth/SAP dell’orologio.</p>
+<ul>
+<li><strong>Riconnessioni stabili:</strong> ho analizzato i difetti del ciclo di vita quando la connessione si interrompe e viene ristabilita.</li>
+<li><strong>Azioni funzionanti:</strong> ho corretto gli identificatori delle azioni e la gestione delle risposte, per poter interagire con una notifica oltre a visualizzarla.</li>
+<li><strong>Sincronizzazione dei contatti:</strong> ho risolto problemi di sincronizzazione e duplicazione dei contatti.</li>
+</ul>
+<h2>Come l’ho verificato</h2>
+<p>Ho provato l’integrazione con dispositivi fisici e aggiunto test di regressione sul comportamento del protocollo e delle notifiche. Una connessione riuscita è solo il primo passo: risposte, riconnessioni e sincronizzazione dello stato devono continuare a funzionare anche dopo.</p>
+<div class="callout">
+<p><strong>Stato attuale.</strong> È uno sviluppo sperimentale e indipendente basato su Gadgetbridge. Non è stato integrato nel progetto originale e non è dimostrata la compatibilità con tutte le versioni firmware e tutte le funzioni dell’orologio. La configurazione iniziale può ancora dipendere dalla procedura di associazione Samsung.</p>
+</div>
+<h2>Codice e attribuzioni</h2>
+<p>Il progetto originale Gadgetbridge fornisce l’applicazione di base. Il mio fork pubblica separatamente il lavoro sul Gear S3 e conserva attribuzioni e licenze del progetto originale.</p>
+<p><a href="https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3/tree/master/app/src/main/java/nodomain/freeyourgadget/gadgetbridge/service/devices/samsung/gear">Implementazione Gear S3 ↗</a> · <a href="https://codeberg.org/Freeyourgadget/Gadgetbridge">Progetto originale Gadgetbridge ↗</a></p>
+</article>
+<nav class="case-end" aria-label="Altri progetti"><a href="/it/projects.html">← Tutti i progetti</a><a href="/it/projects/encrypted-traffic.html">Successivo: Traffico cifrato, oltre l’accuratezza →</a></nav>
+</main>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="/it/projects.html">Progetti</a> · <a href="https://github.com/Alessio-Olivieri">GitHub</a> · <a href="/cv.pdf">CV (EN)</a></span></footer>
+</div>
+</body>
+</html>

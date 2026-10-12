@@ -9,13 +9,22 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'assets/projects'
 data=json.loads((OUT/'data/benchmarks.json').read_text())
 BG='#111c27'; TEXT='#e9f1f3'; MUTED='#a6b5c0'; GRID='#293745'; MINT='#a7f0d1'; PURPLE='#c7c4ff'
-plt.rcParams.update({'font.family':'DejaVu Sans','font.size':12,'text.color':TEXT,'axes.labelcolor':MUTED,'xtick.color':MUTED,'ytick.color':TEXT,'axes.edgecolor':GRID,'figure.facecolor':BG,'axes.facecolor':BG,'svg.fonttype':'none','savefig.facecolor':BG})
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':12,'text.color':TEXT,'axes.labelcolor':MUTED,'xtick.color':MUTED,'ytick.color':TEXT,'axes.edgecolor':GRID,'figure.facecolor':BG,'axes.facecolor':BG,'svg.fonttype':'none','svg.hashsalt':'alessio-portfolio','savefig.facecolor':BG})
 def axbase(ax):
  for sp in ax.spines.values():sp.set_visible(False)
  ax.set_axisbelow(True);ax.xaxis.grid(True,color=GRID,linewidth=.8)
  ax.tick_params(axis='both',length=0,pad=10)
 def save(fig,name):
  fig.savefig(OUT/name,format='svg',metadata={'Date':None},bbox_inches='tight',pad_inches=.24)
+ from matplotlib.text import Text
+ translations=json.loads((ROOT/'locales/charts.it.json').read_text())
+ for axis in fig.axes:
+  labels=['\n'.join(translations.get(line,line) for line in label.get_text().split('\n')) for label in axis.get_yticklabels()]
+  axis.set_yticks(axis.get_yticks(),labels)
+ for artist in fig.findobj(Text):
+  original=artist.get_text()
+  artist.set_text('\n'.join(translations.get(line,line) for line in original.split('\n')))
+ fig.savefig(OUT/name.replace('.svg','.it.svg'),format='svg',metadata={'Date':None},bbox_inches='tight',pad_inches=.24)
  plt.close(fig)
 # Timings are complete workload durations, not per-image latency.
 fig,ax=plt.subplots(figsize=(9.6,4.8));fig.subplots_adjust(left=.26,right=.89,bottom=.18,top=.82)
@@ -44,4 +53,8 @@ for i,r in enumerate(rows):
 axbase(ax);fig.text(.035,.97,'The most accurate model is not the best segmenter',fontsize=18,fontweight='bold',va='top');fig.text(.035,.897,'Cholec80 · 40 held-out videos · raw model outputs',fontsize=11,color=MUTED,va='top')
 ax.legend(loc='lower left',bbox_to_anchor=(0,1.06),ncol=2,frameon=False,fontsize=11,labelcolor=TEXT)
 save(fig,'surgical-comparison.svg')
-print('Rendered 3 SVG charts from assets/projects/data/benchmarks.json')
+print('Rendered 3 charts in English and Italian from the same benchmark values')
+
+# Normalize generated SVG whitespace for clean source diffs.
+for svg in OUT.glob('*.svg'):
+ svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')

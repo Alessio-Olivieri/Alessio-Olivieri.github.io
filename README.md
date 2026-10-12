@@ -33,3 +33,9 @@ python3 tools/render_figures.py
 - `social-preview.png` is a screenshot of this portfolio's homepage for link previews.
 
 The supplied slide decks are not republished in full. Figure captions identify their origin. Claims about deployment, upstream merging, runtime or generalization are limited to the evidence described in each case study.
+
+## English / Italian
+
+English is the default at the existing URLs. A paired EN/IT control appears on every page; `/it/` contains the complete Italian version. Internal navigation stays in the selected language, and the switch opens the equivalent page. No browser-language detection or automatic redirect overrides the English default. The PDF résumé is currently English and is labeled `CV (EN)` on Italian pages.
+
+Edit English content in the original HTML files and translations in `locales/it.json`, then run `python3 tools/build_translations.py`. This also maintains canonical and `hreflang` links (`en`, `it`, `x-default`). Chart translations are in `locales/charts.it.json`; `python3 tools/render_figures.py` generates both language versions from identical numeric data. Original presentation images are preserved and have translated captions and alternative text.

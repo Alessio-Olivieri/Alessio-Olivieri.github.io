@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+<title id="title">Integrazione Gear S3: notifiche, risposte e sincronizzazione contatti</title><desc id="desc">Schema concettuale di Android e un orologio Tizen collegati tramite l’integrazione Gear S3. È un’illustrazione del protocollo, non una schermata dell’app.</desc>
+<defs><linearGradient id="screen" x2="1" y2="1"><stop stop-color="#172d3b"/><stop offset="1" stop-color="#252b40"/></linearGradient></defs>
+<rect width="960" height="480" rx="20" fill="#111c27"/>
+<g font-family="Arial,sans-serif" fill="#e9f1f3">
+<text x="40" y="46" font-size="22" font-weight="700">Una seconda vita per un orologio Tizen</text>
+<text x="40" y="76" fill="#a6b5c0" font-size="15">Integrazione indipendente di Gadgetbridge · schema del protocollo</text>
+<rect x="80" y="124" width="166" height="270" rx="25" fill="url(#screen)" stroke="#7595a5" stroke-width="2"/><rect x="139" y="136" width="50" height="5" rx="3" fill="#7595a5"/>
+<rect x="101" y="190" width="124" height="50" rx="8" fill="#a7f0d1" fill-opacity=".13" stroke="#a7f0d1"/><text x="163" y="220" font-size="14" text-anchor="middle" fill="#a7f0d1">Gadgetbridge</text>
+<path d="M110 276H212M110 296H185M110 316H198" stroke="#7595a5" stroke-width="5" stroke-linecap="round"/><circle cx="163" cy="372" r="6" fill="#7595a5"/>
+<rect x="755" y="120" width="68" height="72" rx="13" fill="#223748" stroke="#527384"/><rect x="755" y="337" width="68" height="61" rx="13" fill="#223748" stroke="#527384"/>
+<circle cx="789" cy="260" r="97" fill="#0b111a" stroke="#7595a5" stroke-width="3"/><circle cx="789" cy="260" r="79" fill="url(#screen)" stroke="#365362"/><text x="789" y="250" text-anchor="middle" font-size="20" font-weight="700">Gear S3</text><text x="789" y="278" text-anchor="middle" font-size="14" fill="#c7c4ff">Tizen</text>
+<path d="M287 190H650l-11 -7m11 7l-11 7" fill="none" stroke="#a7f0d1" stroke-width="2"/><text x="465" y="174" text-anchor="middle" font-size="18" fill="#a7f0d1">Notifiche</text>
+<path d="M650 266H287l11 -7m-11 7l11 7" fill="none" stroke="#c7c4ff" stroke-width="2"/><text x="465" y="250" text-anchor="middle" font-size="18" fill="#c7c4ff">Azioni e risposte</text>
+<path d="M287 341H650l-11 -7m11 7l-11 7" fill="none" stroke="#a7f0d1" stroke-width="2"/><text x="465" y="325" text-anchor="middle" font-size="18" fill="#a7f0d1">Sincronizzazione contatti</text>
+<text x="163" y="436" text-anchor="middle" font-size="15" fill="#a6b5c0">Android</text><text x="480" y="436" text-anchor="middle" font-size="15" fill="#a6b5c0">Bluetooth / SAP</text><text x="789" y="436" text-anchor="middle" font-size="15" fill="#a6b5c0">Test su dispositivi fisici</text>
+</g></svg>

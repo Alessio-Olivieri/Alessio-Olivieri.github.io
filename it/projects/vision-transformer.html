@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b111a"><title>Pruning dei Vision Transformer — Alessio Olivieri</title><meta name="description" content="Ho rimosso l’85% delle teste di attenzione da un piccolo Vision Transformer e ridotto il tempo di valutazione su CPU da 6.56 a 3.55 secondi. Riaddestrando da zero l’architettura sparsa ho recuperato un’accuratezza di validazione riportata del 55.24%.">
+<link rel="canonical" href="https://alessio-olivieri.github.io/it/projects/vision-transformer.html"><meta property="og:type" content="website"><meta property="og:title" content="Pruning dei Vision Transformer — Alessio Olivieri"><meta property="og:description" content="Ho rimosso l’85% delle teste di attenzione da un piccolo Vision Transformer e ridotto il tempo di valutazione su CPU da 6.56 a 3.55 secondi. Riaddestrando da zero l’architettura sparsa ho recuperato un’accuratezza di validazione riportata del 55.24%."><meta property="og:url" content="https://alessio-olivieri.github.io/it/projects/vision-transformer.html"><meta property="og:image" content="https://alessio-olivieri.github.io/assets/projects/social-preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/showcase.css"><link rel="alternate" hreflang="en" href="https://alessio-olivieri.github.io/projects/vision-transformer.html">
+<link rel="alternate" hreflang="it" href="https://alessio-olivieri.github.io/it/projects/vision-transformer.html">
+<link rel="alternate" hreflang="x-default" href="https://alessio-olivieri.github.io/projects/vision-transformer.html">
+</head>
+<body><a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="wrap">
+<header class="nav"><a class="logo" href="/it/index.html" aria-label="Pagina iniziale di Alessio Olivieri">AO<span>.</span></a>
+<nav class="navlinks" aria-label="Navigazione principale"><a href="/it/projects.html" aria-current="page">Progetti</a><a class="about-nav" href="/it/index.html#about">Chi sono</a><a href="/cv.pdf">CV (EN)</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a><span class="language-switch" role="group" aria-label="Lingua"><a href="/projects/vision-transformer.html" lang="en" hreflang="en" aria-label="English" title="English">EN</a><a href="/it/projects/vision-transformer.html" lang="it" hreflang="it" aria-label="Italiano" title="Italiano" aria-current="true">IT</a></span></nav>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Percorso di navigazione"><a href="/it/projects.html">Progetti</a><span aria-hidden="true">/</span><span>Pruning dei Vision Transformer</span></nav>
+<section class="page-hero case-hero"><span class="eyebrow">INTERPRETABILITÀ MECCANICISTICA</span>
+<h1>Un Vision Transformer più piccolo, trovato con l’analisi causale.</h1>
+<p class="lead">Ho rimosso l’85% delle teste di attenzione da un piccolo Vision Transformer e ridotto il tempo di valutazione su CPU da 6.56 a 3.55 secondi. Riaddestrando da zero l’architettura sparsa ho recuperato un’accuratezza di validazione riportata del 55.24%.</p>
+<div class="case-meta"><time datetime="2025-06">Mag – Giu 2025</time><span>Progetto individuale di Computer Vision</span></div>
+<div class="chips"><span class="chip">PyTorch</span><span class="chip">Activation patching</span><span class="chip">ACDC</span></div>
+<div class="actions"><a class="button" href="https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer">Esplora il codice ↗</a><a class="button ghost" href="/cv.pdf">Visualizza il CV (EN) ↗</a></div>
+</section>
+<div class="metric-strip" aria-label="Risultati principali del progetto">
+<div><strong>41 / 48</strong><span>teste di attenzione rimosse con τ = 0.01</span></div>
+<div><strong>1.85×</strong><span>speedup su CPU nel carico di valutazione registrato</span></div>
+<div><strong>55.24%</strong><span>accuratezza di validazione riportata dopo il riaddestramento</span></div>
+</div>
+<article class="story" aria-label="Approfondimento del progetto">
+<h2>Quali parti della rete servono davvero al compito?</h2>
+<p>Ho addestrato un piccolo Vision Transformer su 58 classi di animali di Tiny ImageNet, poi ho usato una procedura di activation patching ispirata ad ACDC per trovare un circuito computazionale sparso. Il compito di scoperta raggruppa gli animali in sei categorie generali.</p>
+<figure class="figure paper dataset"><a class="figure-image" href="/assets/projects/vit-dataset.webp" target="_blank" rel="noopener" aria-label="Apri la figura a dimensione intera: Immagini della presentazione originale che illustrano esempi di input puliti e corrotti."><img src="/assets/projects/vit-dataset.webp" width="908" height="384" alt="Immagini della presentazione originale che illustrano esempi di input puliti e corrotti." loading="lazy" decoding="async"></a>
+<figcaption>Esempi di input dalla mia presentazione di Computer Vision, slide 8, 19 giugno 2025. Le immagini fanno parte dell’esperimento su Tiny ImageNet.<span class="zoom-hint">Seleziona la figura per aprirla a dimensione intera.</span></figcaption>
+</figure>
+<h2>Il mio contributo</h2>
+<p>Ho implementato in PyTorch un ViT con supporto al pruning, l’abbinamento tra input puliti e corrotti, l’activation patching e le utilità per i grafi. Il modello ha sei blocchi e otto teste di attenzione per blocco. Ogni arco candidato viene verificato sostituendo il suo contributo di attivazione pulito con uno corrotto; gli archi sotto una soglia di divergenza KL vengono rimossi.</p>
+<figure class="figure paper "><a class="figure-image" href="/assets/projects/vit-circuit.webp" target="_blank" rel="noopener" aria-label="Apri la figura a dimensione intera: Circuito sparso di un Vision Transformer con sette nodi di teste di attenzione e sei nodi MLP collegati all’output."><img src="/assets/projects/vit-circuit.webp" width="940" height="418" alt="Circuito sparso di un Vision Transformer con sette nodi di teste di attenzione e sei nodi MLP collegati all’output." loading="lazy" decoding="async"></a>
+<figcaption>Visualizzazione originale del circuito dalla slide 11 della mia presentazione. Mostra la rete compatta trovata dall’esperimento di pruning.<span class="zoom-hint">Seleziona la figura per aprirla a dimensione intera.</span></figcaption>
+</figure>
+<h2>Il compromesso tra prestazioni e accuratezza</h2>
+<p>Con τ = 0.01, il circuito ha conservato <strong>7 teste di attenzione su 48</strong> e tutti i blocchi MLP. Il tempo del carico CPU registrato su Ryzen 7 4700U è passato da <strong>6.56 a 3.55 secondi</strong>, con uno <strong>speedup di 1.85×</strong>. Il tempo è una media su dieci esecuzioni del carico di valutazione, non la latenza per immagine.</p>
+<figure class="figure  "><a class="figure-image" href="/assets/projects/vit-timing.it.svg" target="_blank" rel="noopener" aria-label="Apri la figura a dimensione intera: Il tempo di valutazione su CPU passa da 6.56 secondi senza pruning a 5.17 secondi con 18 teste rimosse e 3.55 secondi con 41 teste rimosse."><img src="/assets/projects/vit-timing.it.svg" width="630" height="351" alt="Il tempo di valutazione su CPU passa da 6.56 secondi senza pruning a 5.17 secondi con 18 teste rimosse e 3.55 secondi con 41 teste rimosse." loading="lazy" decoding="async"></a>
+<figcaption>Grafico ricostruito con i colori del portfolio dal benchmark Ryzen 7 4700U del repository, corrispondente all’analisi dei tempi nella slide 11 della presentazione.<span class="zoom-hint">Seleziona la figura per aprirla a dimensione intera.</span></figcaption>
+</figure>
+<details class="data-details">
+<summary>Mostra i valori esatti</summary>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th scope="col">Configurazione</th><th scope="col">Teste rimosse</th><th scope="col">Tempo del carico</th><th scope="col">Accuratezza prima del riaddestramento</th></tr>
+</thead>
+<tbody>
+<tr><td>Senza pruning · τ = 0.0001</td><td>0 / 48</td><td>6.56 s</td><td>60.07%</td></tr>
+<tr><td>Moderato · τ = 0.003</td><td>18 / 48</td><td>5.17 s</td><td>56.10%</td></tr>
+<tr><td>Sparso · τ = 0.01</td><td>41 / 48</td><td>3.55 s</td><td>31.83%</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<p>Il pruning aggressivo ha ridotto l’accuratezza iniziale del benchmark. Ho quindi creato un nuovo modello con l’architettura sparsa individuata e l’ho addestrato da zero, raggiungendo un’ <strong>accuratezza di validazione riportata del 55.24%</strong>. Questo risultato di riaddestramento è distinto dalla serie di misure dei tempi eseguita prima del riaddestramento.</p>
+<div class="callout">
+<p><strong>Che cosa sostiene l’esperimento.</strong> La scoperta di circuiti può fornire un’architettura compatta utile, ma rimuovere componenti ha un costo in accuratezza e lo speedup dipende dall’implementazione e dall’hardware. Non è stato dimostrato uno speedup su GPU.</p>
+</div>
+<p class="source-note"><a href="https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/data/benchmark%20ryzen74700u.txt">Benchmark CPU grezzo ↗</a> · <a href="https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/readme.md">Metodo e risultato del riaddestramento ↗</a></p>
+</article>
+<nav class="case-end" aria-label="Altri progetti"><a href="/it/projects.html">← Tutti i progetti</a><a href="/it/projects/swing-allreduce.html">Successivo: Swing AllReduce su GPU →</a></nav>
+</main>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="/it/projects.html">Progetti</a> · <a href="https://github.com/Alessio-Olivieri">GitHub</a> · <a href="/cv.pdf">CV (EN)</a></span></footer>
+</div>
+</body>
+</html>

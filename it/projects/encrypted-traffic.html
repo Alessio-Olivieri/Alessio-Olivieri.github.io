@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="it">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b111a"><title>Traffico cifrato: oltre l’accuratezza — Alessio Olivieri</title><meta name="description" content="Ho raggiunto il 92.53% di accuratezza media su una suddivisione fissa con flussi separati, poi ho usato la randomizzazione dei payload e l’analisi della provenienza delle acquisizioni per capire cosa avesse davvero appreso il classificatore.">
+<link rel="canonical" href="https://alessio-olivieri.github.io/it/projects/encrypted-traffic.html"><meta property="og:type" content="website"><meta property="og:title" content="Traffico cifrato: oltre l’accuratezza — Alessio Olivieri"><meta property="og:description" content="Ho raggiunto il 92.53% di accuratezza media su una suddivisione fissa con flussi separati, poi ho usato la randomizzazione dei payload e l’analisi della provenienza delle acquisizioni per capire cosa avesse davvero appreso il classificatore."><meta property="og:url" content="https://alessio-olivieri.github.io/it/projects/encrypted-traffic.html"><meta property="og:image" content="https://alessio-olivieri.github.io/assets/projects/social-preview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/showcase.css"><link rel="alternate" hreflang="en" href="https://alessio-olivieri.github.io/projects/encrypted-traffic.html">
+<link rel="alternate" hreflang="it" href="https://alessio-olivieri.github.io/it/projects/encrypted-traffic.html">
+<link rel="alternate" hreflang="x-default" href="https://alessio-olivieri.github.io/projects/encrypted-traffic.html">
+</head>
+<body><a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="wrap">
+<header class="nav"><a class="logo" href="/it/index.html" aria-label="Pagina iniziale di Alessio Olivieri">AO<span>.</span></a>
+<nav class="navlinks" aria-label="Navigazione principale"><a href="/it/projects.html" aria-current="page">Progetti</a><a class="about-nav" href="/it/index.html#about">Chi sono</a><a href="/cv.pdf">CV (EN)</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a><span class="language-switch" role="group" aria-label="Lingua"><a href="/projects/encrypted-traffic.html" lang="en" hreflang="en" aria-label="English" title="English">EN</a><a href="/it/projects/encrypted-traffic.html" lang="it" hreflang="it" aria-label="Italiano" title="Italiano" aria-current="true">IT</a></span></nav>
+</header>
+<main id="main">
+<nav class="breadcrumbs" aria-label="Percorso di navigazione"><a href="/it/projects.html">Progetti</a><span aria-hidden="true">/</span><span>Traffico cifrato: oltre l’accuratezza</span></nav>
+<section class="page-hero case-hero"><span class="eyebrow">ML SU GRAFI · SICUREZZA INFORMATICA</span>
+<h1>Che cosa rivela davvero il traffico cifrato?</h1>
+<p class="lead">Ho raggiunto il 92.53% di accuratezza media su una suddivisione fissa con flussi separati, poi ho usato la randomizzazione dei payload e l’analisi della provenienza delle acquisizioni per capire cosa avesse davvero appreso il classificatore.</p>
+<div class="case-meta"><time datetime="2026-10">Mag – Ott 2026</time><span>Adattamento individuale di TFE-GNN per la ricerca</span></div>
+<div class="chips"><span class="chip">PyTorch Geometric</span><span class="chip">GraphSAGE</span><span class="chip">Disegno sperimentale</span></div>
+<div class="actions"><a class="button" href="https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release">Esplora il codice ↗</a><a class="button ghost" href="/cv.pdf">Visualizza il CV (EN) ↗</a></div>
+</section>
+<div class="metric-strip" aria-label="Risultati principali del progetto">
+<div><strong>92.53%</strong><span>accuratezza media; ±1.51 punti percentuali tra i seed</span></div>
+<div><strong>1.674</strong><span>campioni di sei classi di traffico</span></div>
+<div><strong>3 seed</strong><span>un’unica suddivisione fissa con flussi separati</span></div>
+</div>
+<article class="story" aria-label="Approfondimento del progetto">
+<h2>Un punteggio alto è l’inizio dell’indagine</h2>
+<p>La domanda di ricerca era se i payload aiutassero a classificare il traffico cifrato grazie ai valori dei byte cifrati, oppure perché contengono anche lunghezze, struttura dei record, testo in chiaro e altre informazioni.</p>
+<p>Ho adattato l’architettura TFE-GNN a PyTorch Geometric e valutato sei classi di traffico ISCXVPN2016. Il modello usa grafi separati per header e payload, encoder GraphSAGE, fusione cross-gated e una LSTM bidirezionale. L’architettura deriva dal lavoro di <a href="https://github.com/ViktorAxelsen/TFE-GNN">Zhang et al., WWW 2023</a>.</p>
+<figure class="figure  "><a class="figure-image" href="/assets/projects/traffic-ablation.it.svg" target="_blank" rel="noopener" aria-label="Apri la figura a dimensione intera: Accuratezza su tre seed di addestramento: payload reale 92.53%, randomizzazione completa 73.60%, soli header 79.33%, randomizzazione TLS 94.80%."><img src="/assets/projects/traffic-ablation.it.svg" width="639" height="385" alt="Accuratezza su tre seed di addestramento: payload reale 92.53%, randomizzazione completa 73.60%, soli header 79.33%, randomizzazione TLS 94.80%." loading="lazy" decoding="async"></a>
+<figcaption>Grafico ricostruito dalla tabella dei risultati pubblicati. Le barre di errore indicano la deviazione standard campionaria su tre seed di addestramento con la stessa suddivisione dei dati, non intervalli di confidenza.<span class="zoom-hint">Seleziona la figura per aprirla a dimensione intera.</span></figcaption>
+</figure>
+<details class="data-details">
+<summary>Mostra i valori esatti</summary>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th scope="col">Condizione</th><th scope="col">Accuratezza</th><th scope="col">Dev. standard campionaria</th></tr>
+</thead>
+<tbody>
+<tr><td>Payload reale</td><td>92.53%</td><td>1.51 pp</td></tr>
+<tr><td>Payload completamente randomizzato</td><td>73.60%</td><td>14.95 pp</td></tr>
+<tr><td>Solo header</td><td>79.33%</td><td>8.62 pp</td></tr>
+<tr><td>TLS-GCM randomizzato</td><td>94.80%</td><td>1.06 pp</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<h2>Il mio contributo</h2>
+<p>Ho collegato il modello adattato all’estrazione dei pacchetti e alla costruzione dei grafi, introdotto esperimenti controllati di randomizzazione di payload e TLS e ricondotto le predizioni alle acquisizioni di origine. Predizioni salvate, suddivisioni documentate, verifica dei risultati e test di regressione permettono di esaminare l’analisi senza ripetere l’addestramento.</p>
+<h2>Che cosa hanno rivelato i controlli</h2>
+<p>Sostituire interi payload ha ridotto l’accuratezza media e aumentato la variabilità. Randomizzare soltanto i byte cifrati TLS 1.2 AES-GCM identificati con criteri conservativi non ha ridotto il punteggio misurato. Questo sostiene una conclusione più circoscritta di «il modello comprende la cifratura»: l’informazione utile del payload non si trova necessariamente nei valori dei byte cifrati.</p>
+<div class="callout">
+<p><strong>La copertura conta.</strong> L’intervento TLS ha modificato il 17.97% dei byte di payload conservati e interessato 85 dei 250 campioni di test. I byte non supportati e la struttura del protocollo sono rimasti invariati. È un contrasto osservato, non la prova che il testo cifrato non conti mai.</p>
+</div>
+<h2>Il limite della valutazione che ho individuato</h2>
+<p>La suddivisione in 1.172/252/250 campioni di training/validazione/test separa i flussi, ma le partizioni condividono le acquisizioni di origine. L’analisi ha trovato troppo pochi gruppi di acquisizione indipendenti per una valutazione attendibile delle sei classi su acquisizioni separate. Tre seed misurano la variabilità dell’addestramento; non creano dati di test indipendenti.</p>
+<p><strong>Il risultato è sia un classificatore funzionante sia una delimitazione documentata di ciò che i dati consentono di affermare.</strong> Non viene riportato un punteggio di generalizzazione su acquisizioni indipendenti.</p>
+<p class="source-note"><a href="https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release/results">Risultati salvati e provenienza ↗</a> · <a href="https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release/experiments">Protocollo sperimentale ↗</a></p>
+</article>
+<nav class="case-end" aria-label="Altri progetti"><a href="/it/projects.html">← Tutti i progetti</a><a href="/it/projects/surgical-workflow.html">Successivo: Analisi del flusso chirurgico →</a></nav>
+</main>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="/it/projects.html">Progetti</a> · <a href="https://github.com/Alessio-Olivieri">GitHub</a> · <a href="/cv.pdf">CV (EN)</a></span></footer>
+</div>
+</body>
+</html>
