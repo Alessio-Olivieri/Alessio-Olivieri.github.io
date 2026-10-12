@@ -1,0 +1,64 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tgpagella}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\geometry{left=0.59in,right=0.59in,top=0.44in,bottom=0.43in}
+\definecolor{ink}{HTML}{1A2935}
+\definecolor{accent}{HTML}{146478}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,pdfauthor={Alessio Olivieri},pdftitle={Alessio Olivieri - Curriculum Vitae}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+\hyphenpenalty=10000\exhyphenpenalty=10000
+\setlist[itemize]{leftmargin=1.22em,itemsep=1pt,topsep=1.5pt,parsep=0pt,partopsep=0pt}
+\titleformat{\section}{\large\bfseries\color{ink}}{}{0pt}{}[\color{accent}\titlerule]
+\titlespacing*{\section}{0pt}{6.1pt}{3.2pt}
+\newcommand{\entry}[2]{\textbf{#1}\hfill{\footnotesize\color{accent}#2}\par}
+\newcommand{\proj}[3]{\textbf{\href{#2}{#1}.} #3\par\vspace{2.7pt}}
+\pagestyle{empty}
+\begin{document}
+\begin{center}
+{\fontsize{20}{22}\selectfont\bfseries Alessio Olivieri}\\[3pt]
+{\small Artificial Intelligence \textbar\ Robotics \textbar\ Machine Learning \textbar\ Systems Engineering}\\[3pt]
+{\footnotesize Rome, Italy \quad\textbar\quad
+\href{mailto:olivieri.1973323@studenti.uniroma1.it}{olivieri.1973323@studenti.uniroma1.it} \quad\textbar\quad
+\href{https://www.linkedin.com/in/alessio-olivieri/}{LinkedIn} \quad\textbar\quad
+\href{https://github.com/Alessio-Olivieri}{GitHub} \quad\textbar\quad
+\href{https://alessio-olivieri.github.io/}{Portfolio}}
+\end{center}
+\vspace{-7pt}
+\section{Profile}
+MSc student in \textbf{Artificial Intelligence \& Robotics} at Sapienza University of Rome, combining research in \textbf{deep learning, interpretable vision models, GPU computing, and cybersecurity ML} with practical open-source and software engineering. Interested in research-oriented AI and systems roles.
+\section{Education}
+\entry{MSc, Artificial Intelligence \& Robotics -- Sapienza University of Rome}{In progress}
+Focus: machine learning, robotics, computer vision, optimization, neural networks, and HPC.\\[2pt]
+\entry{BSc, Applied Computer Science \& Artificial Intelligence -- Sapienza}{Completed \textbar\ 101/110}
+Focus: algorithms, statistics, linear algebra, software engineering, networking, and AI.
+\section{Experience}
+\entry{Mathematics Tutor -- Linear Algebra, Sapienza University of Rome}{Sep 2025 -- Feb 2026}
+Delivered supplementary Linear Algebra classes alongside \href{https://corsidilaurea.uniroma1.it/it/lecturer/0ab860a416b8b37f38529f8f7cd0e5cf67a5214ad60e04af6ba7c3b6}{Prof. Max Tschaikowski's} lectures, supporting bachelor's students in Applied Computer Science and Artificial Intelligence (ACSAI).\\[2pt]
+\entry{Programming Tutor}{Nov 2023 -- Jan 2024}
+Tutored university students in programming and technical subjects; developed learning materials and communicated feedback.\\[2pt]
+\entry{Plum Juice -- Technical Writer \& Team Member}{Sep 2024 -- present}
+Wrote technical articles and contributed to the team's social media presence.
+\section{Research \& Technical Projects}
+\proj{Vision Transformer Pruning and Interpretability}{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer}{Implemented ACDC-style causal analysis and activation patching in PyTorch; removed \textbf{85\% of attention heads}, enabling about \textbf{2$\times$ faster CPU inference} after retraining with a 9\% accuracy drop.}
+\proj{Swing AllReduce -- GPU Collectives (Bachelor's Thesis)}{https://github.com/Alessio-Olivieri/msccl-tools}{Implemented and benchmarked NCCL/MSCCLang multi-GPU communication, including Leonardo HPC testing; observed topology-dependent speedups in tested configurations.}
+\proj{Encrypted Network Traffic Classification -- Research}{https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release}{Studied graph-based traffic classification with controlled ablations and capture-provenance audits; identified limits of flow-disjoint generalization claims.}
+\proj{Gadgetbridge -- Samsung Gear S3 Interoperability}{https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3}{Developed Android--Tizen Bluetooth/SAP integration, notification replies, reconnection fixes, log analysis and regression tests on physical devices.}
+\proj{Video Action Segmentation}{https://alessio-olivieri.github.io/}{Compared MS-TCN and bidirectional GRU architectures for frame-level segmentation; best reported macro-F1: \textbf{0.83}.}
+\proj{Real-Time Fire Detection}{https://github.com/ami-sc/fire-detection}{Optimized a surveillance-camera detection pipeline with NumPy and background subtraction from \textbf{0.1 to 60 FPS} in project benchmarks.}
+\proj{LLM-to-SQL Assistant}{https://github.com/Alessio-Olivieri/chatbot}{Built a Streamlit application translating natural-language questions into SQL queries using Llama models.}
+\proj{Parallel Neural Network}{https://github.com/tintando/multiprocessing-NN}{Built an MLP in C/Pthreads and CUDA, reporting about \textbf{10$\times$ speedup} on 10 CPU cores.}
+\proj{Other software/data projects}{https://github.com/Alessio-Olivieri}{WasaPhoto RESTful social platform (Go, Vue, SQLite, Docker) and ingredient-network analysis of over 6,000 scraped recipes.}
+\section{Technical Skills}
+\textbf{Programming:} Python, C, Java, Go, JavaScript, SQL, R; PyTorch, NumPy, CUDA, Pthreads.\\
+\textbf{Tools \& domains:} Linux, Docker, Git, Android, Bluetooth, NCCL/MSCCLang, ML evaluation, computer vision, distributed systems.\\
+\textbf{Languages:} English (C2), Italian (C2), Spanish (A2), Polish (A2).
+\end{document}
