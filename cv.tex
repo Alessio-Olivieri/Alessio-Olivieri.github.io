@@ -7,10 +7,9 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{titlesec}
-\usepackage{multicol}
 \usepackage{xcolor}
 \usepackage{hyperref}
-\geometry{left=0.45in,right=0.45in,top=0.36in,bottom=0.36in}
+\geometry{left=0.50in,right=0.50in,top=0.38in,bottom=0.38in}
 \definecolor{accent}{HTML}{14566D}
 \definecolor{ink}{HTML}{182836}
 \hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,pdfauthor={Alessio Olivieri},pdftitle={Alessio Olivieri - Full Curriculum Vitae}}
@@ -18,15 +17,15 @@
 \setlength{\parskip}{0pt}
 \raggedright
 \hyphenpenalty=10000\exhyphenpenalty=10000
-\setlist[itemize]{leftmargin=1.1em,itemsep=0.2pt,topsep=0.5pt,parsep=0pt,partopsep=0pt}
+\setlist[itemize]{leftmargin=1.3em,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
 \titleformat{\section}{\fontfamily{phv}\selectfont\bfseries\fontsize{11.3}{12.6}\color{ink}}{}{0pt}{}[\color{accent}\titlerule]
-\titlespacing*{\section}{0pt}{4pt}{2.5pt}
-\newcommand{\project}[2]{\par\vspace{2.1pt}{\bfseries #1}\enspace{\scriptsize #2}\par}
+\titlespacing*{\section}{0pt}{5pt}{2.5pt}
+\newcommand{\project}[2]{\par\vspace{3pt}{\bfseries #1}\enspace{\scriptsize #2}\par\vspace{0pt}}
 \newcommand{\experience}[2]{\textbf{#1}\hfill{\footnotesize\color{accent}#2}\par}
 \newcommand{\sublink}[2]{\href{#1}{\color{accent}#2}}
 \pagestyle{empty}
 \begin{document}
-\fontsize{10.3}{11.6}\selectfont
+\fontsize{10.3}{11.5}\selectfont
 \begin{center}
 {\fontfamily{phv}\selectfont\fontsize{21}{22}\bfseries Alessio Olivieri}\par\vspace{2pt}
 {\footnotesize Rome, Italy \quad | \quad \href{mailto:olivieri.1973323@studenti.uniroma1.it}{olivieri.1973323@studenti.uniroma1.it} \quad | \quad \sublink{https://www.linkedin.com/in/alessio-olivieri/}{LinkedIn} \quad | \quad \sublink{https://github.com/Alessio-Olivieri}{GitHub} \quad | \quad \sublink{https://alessio-olivieri.github.io/}{Portfolio}}
@@ -39,8 +38,6 @@
 \textbf{Final grade: 101/110.} Coursework: Python, Java, R, Linear Algebra, Physics, Calculus I--II, Machine Learning, Computer Vision, Data Analysis, Cybersecurity, OS, Networks, Linear Programming, Algorithms, Probability, Statistics, Discrete Mathematics.
 
 \section{Research \& Technical Projects}
-\setlength{\columnsep}{0.24in}
-\begin{multicols}{2}
 \project{Vision Transformer Pruning via Mechanistic Interpretability}{\sublink{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer}{code} | \sublink{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/presentation.pdf}{slides}}
 \begin{itemize}
 \item Implemented ACDC-style causal analysis and activation patching in \textbf{PyTorch} to identify redundant components in a ViT.
@@ -64,7 +61,6 @@
 \item Independently built Bluetooth / Samsung Accessory Protocol integration for the Gear S3: phone notifications, replies, contacts, reconnect handling and action-ID stability.
 \item Debugged traffic and Android lifecycle failures on physical devices; implemented automated regression tests (\textbf{65 plus 12 additional tests} passed in the recorded validation).
 \end{itemize}
-\columnbreak
 
 \project{Video Action Segmentation}{University team project}
 \begin{itemize}
@@ -95,11 +91,10 @@
 \begin{itemize}
 \item Used prompt engineering with \textbf{Llama 8B / 70B} to turn user questions into \textbf{SQL queries}; deployed the interface with \textbf{Streamlit}.
 \end{itemize}
-\end{multicols}
-\vspace{-6pt}
+\vspace{2pt}
 \section{Experience}
 \experience{Mathematics Tutor -- Linear Algebra, Sapienza University of Rome}{Sep 2025 -- Feb 2026}
-Held supplementary Linear Algebra classes in parallel with \sublink{https://corsidilaurea.uniroma1.it/it/lecturer/0ab860a416b8b37f38529f8f7cd0e5cf67a5214ad60e04af6ba7c3b6}{Professor Max Tschaikowski's} course, supporting BSc Applied Computer Science \& Artificial Intelligence (ACSAI) students.\\[1pt]
+Delivered supplementary Linear Algebra classes alongside the main university course, supporting BSc Applied Computer Science \& Artificial Intelligence (ACSAI) students at Sapienza.\\[1pt]
 \experience{Programming Tutor}{Nov 2023 -- Jan 2024}
 Tutored engineering, AI, statistics and economics students; improved learning materials and relayed feedback to department heads.\\[1pt]
 \experience{Plum Juice -- Technical Writer \& Team Member}{Sep 2024 -- Present}
