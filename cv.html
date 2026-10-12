@@ -35,7 +35,7 @@ p{margin:2px 0 5px}
 }
 @media(max-width:700px){.paper{padding:22px 20px}.entry{display:block}.date{display:block;text-align:left}.actions{margin:15px 12px}.contact a{white-space:normal}}
 </style></head><body>
-<nav class="actions"><a href="index.html">← Portfolio</a><div><a class="download" href="cv.pdf" download>Download PDF</a> <button type="button" onclick="window.print()">Print / Save PDF</button></div></nav>
+<nav class="actions"><a href="index.html">← Portfolio</a><div><a class="download" id="cv-download" href="cv.pdf" download>Download PDF</a> <button type="button" onclick="window.print()">Print / Save PDF</button></div></nav>
 <main class="paper">
 <h1>Alessio Olivieri</h1><p class="subtitle">Artificial Intelligence | Robotics | Machine Learning | Systems Engineering</p>
 <p class="contact">Rome, Italy &nbsp; | &nbsp; <a href="mailto:olivieri.1973323@studenti.uniroma1.it">olivieri.1973323@studenti.uniroma1.it</a> &nbsp; | &nbsp; <a href="https://www.linkedin.com/in/alessio-olivieri/">LinkedIn</a> &nbsp; | &nbsp; <a href="https://github.com/Alessio-Olivieri">GitHub</a> &nbsp; | &nbsp; <a href="index.html">Portfolio</a></p>
@@ -66,4 +66,15 @@ p{margin:2px 0 5px}
 <p class="details"><b>Programming:</b> Python, C, Java, Go, JavaScript, SQL, R; PyTorch, NumPy, CUDA, Pthreads.</p>
 <p class="details"><b>Tools &amp; domains:</b> Linux, Docker, Git, Android, Bluetooth, NCCL/MSCCLang, ML evaluation, computer vision, distributed systems.</p>
 <p class="details"><b>Languages:</b> English (C2), Italian (C2), Spanish (A2), Polish (A2).</p></section>
-</main></body></html>
+</main>
+<script>
+document.getElementById('cv-download').addEventListener('click', async function(e) {
+  e.preventDefault();
+  try {
+    const response = await fetch('cv.pdf', {method:'HEAD', cache:'no-store'});
+    if (response.ok) { window.location.href = 'cv.pdf'; return; }
+  } catch (_) {}
+  window.print();
+});
+</script>
+</body></html>
