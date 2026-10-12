@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[9pt,a4paper]{extarticle}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{tgpagella}
@@ -6,59 +6,105 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{titlesec}
+\usepackage{multicol}
 \usepackage{xcolor}
 \usepackage{hyperref}
-\geometry{left=0.59in,right=0.59in,top=0.44in,bottom=0.43in}
-\definecolor{ink}{HTML}{1A2935}
-\definecolor{accent}{HTML}{146478}
-\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,pdfauthor={Alessio Olivieri},pdftitle={Alessio Olivieri - Curriculum Vitae}}
+\geometry{left=0.45in,right=0.45in,top=0.36in,bottom=0.36in}
+\definecolor{accent}{HTML}{14566D}
+\definecolor{ink}{HTML}{182836}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent,pdfauthor={Alessio Olivieri},pdftitle={Alessio Olivieri - Full Curriculum Vitae}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \raggedright
 \hyphenpenalty=10000\exhyphenpenalty=10000
-\setlist[itemize]{leftmargin=1.22em,itemsep=1pt,topsep=1.5pt,parsep=0pt,partopsep=0pt}
-\titleformat{\section}{\large\bfseries\color{ink}}{}{0pt}{}[\color{accent}\titlerule]
-\titlespacing*{\section}{0pt}{6.1pt}{3.2pt}
-\newcommand{\entry}[2]{\textbf{#1}\hfill{\footnotesize\color{accent}#2}\par}
-\newcommand{\proj}[3]{\textbf{\href{#2}{#1}.} #3\par\vspace{2.7pt}}
+\setlist[itemize]{leftmargin=1.1em,itemsep=0.2pt,topsep=0.5pt,parsep=0pt,partopsep=0pt}
+\titleformat{\section}{\fontfamily{phv}\selectfont\bfseries\fontsize{11.3}{12.6}\color{ink}}{}{0pt}{}[\color{accent}\titlerule]
+\titlespacing*{\section}{0pt}{4pt}{2.5pt}
+\newcommand{\project}[2]{\par\vspace{2.1pt}{\bfseries #1}\enspace{\scriptsize #2}\par}
+\newcommand{\experience}[2]{\textbf{#1}\hfill{\footnotesize\color{accent}#2}\par}
+\newcommand{\sublink}[2]{\href{#1}{\color{accent}#2}}
 \pagestyle{empty}
 \begin{document}
+\fontsize{10.3}{11.6}\selectfont
 \begin{center}
-{\fontsize{20}{22}\selectfont\bfseries Alessio Olivieri}\\[3pt]
-{\small Artificial Intelligence \textbar\ Robotics \textbar\ Machine Learning \textbar\ Systems Engineering}\\[3pt]
-{\footnotesize Rome, Italy \quad\textbar\quad
-\href{mailto:olivieri.1973323@studenti.uniroma1.it}{olivieri.1973323@studenti.uniroma1.it} \quad\textbar\quad
-\href{https://www.linkedin.com/in/alessio-olivieri/}{LinkedIn} \quad\textbar\quad
-\href{https://github.com/Alessio-Olivieri}{GitHub} \quad\textbar\quad
-\href{https://alessio-olivieri.github.io/}{Portfolio}}
+{\fontfamily{phv}\selectfont\fontsize{21}{22}\bfseries Alessio Olivieri}\par\vspace{2pt}
+{\footnotesize Rome, Italy \quad | \quad \href{mailto:olivieri.1973323@studenti.uniroma1.it}{olivieri.1973323@studenti.uniroma1.it} \quad | \quad \sublink{https://www.linkedin.com/in/alessio-olivieri/}{LinkedIn} \quad | \quad \sublink{https://github.com/Alessio-Olivieri}{GitHub} \quad | \quad \sublink{https://alessio-olivieri.github.io/}{Portfolio}}
 \end{center}
-\vspace{-7pt}
-\section{Profile}
-MSc student in \textbf{Artificial Intelligence \& Robotics} at Sapienza University of Rome, combining research in \textbf{deep learning, interpretable vision models, GPU computing, and cybersecurity ML} with practical open-source and software engineering. Interested in research-oriented AI and systems roles.
+\vspace{-9pt}
 \section{Education}
-\entry{MSc, Artificial Intelligence \& Robotics -- Sapienza University of Rome}{In progress}
-Focus: machine learning, robotics, computer vision, optimization, neural networks, and HPC.\\[2pt]
-\entry{BSc, Applied Computer Science \& Artificial Intelligence -- Sapienza}{Completed \textbar\ 101/110}
-Focus: algorithms, statistics, linear algebra, software engineering, networking, and AI.
-\section{Experience}
-\entry{Mathematics Tutor -- Linear Algebra, Sapienza University of Rome}{Sep 2025 -- Feb 2026}
-Delivered supplementary Linear Algebra classes alongside \href{https://corsidilaurea.uniroma1.it/it/lecturer/0ab860a416b8b37f38529f8f7cd0e5cf67a5214ad60e04af6ba7c3b6}{Prof. Max Tschaikowski's} lectures, supporting bachelor's students in Applied Computer Science and Artificial Intelligence (ACSAI).\\[2pt]
-\entry{Programming Tutor}{Nov 2023 -- Jan 2024}
-Tutored university students in programming and technical subjects; developed learning materials and communicated feedback.\\[2pt]
-\entry{Plum Juice -- Technical Writer \& Team Member}{Sep 2024 -- present}
-Wrote technical articles and contributed to the team's social media presence.
+\textbf{MSc in Artificial Intelligence \& Robotics -- Sapienza University of Rome} \hfill {\footnotesize Jan 2025 -- May 2027 (expected)}\\[-1pt]
+\textbf{Current average: 29/30.} Coursework: Robotics, Machine Learning, AI, Deep Learning, NLP, Neural Networks, Optimization, HPC, Mobile \& Medical Robotics.\\[1pt]
+\textbf{BSc in Applied Computer Science \& Artificial Intelligence -- Sapienza} \hfill {\footnotesize Oct 2020 -- Dec 2024}\\[-1pt]
+\textbf{Final grade: 101/110.} Coursework: Python, Java, R, Linear Algebra, Physics, Calculus I--II, Machine Learning, Computer Vision, Data Analysis, Cybersecurity, OS, Networks, Linear Programming, Algorithms, Probability, Statistics, Discrete Mathematics.
+
 \section{Research \& Technical Projects}
-\proj{Vision Transformer Pruning and Interpretability}{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer}{Implemented ACDC-style causal analysis and activation patching in PyTorch; removed \textbf{85\% of attention heads}, enabling about \textbf{2$\times$ faster CPU inference} after retraining with a 9\% accuracy drop.}
-\proj{Swing AllReduce -- GPU Collectives (Bachelor's Thesis)}{https://github.com/Alessio-Olivieri/msccl-tools}{Implemented and benchmarked NCCL/MSCCLang multi-GPU communication, including Leonardo HPC testing; observed topology-dependent speedups in tested configurations.}
-\proj{Encrypted Network Traffic Classification -- Research}{https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release}{Studied graph-based traffic classification with controlled ablations and capture-provenance audits; identified limits of flow-disjoint generalization claims.}
-\proj{Gadgetbridge -- Samsung Gear S3 Interoperability}{https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3}{Developed Android--Tizen Bluetooth/SAP integration, notification replies, reconnection fixes, log analysis and regression tests on physical devices.}
-\proj{Video Action Segmentation}{https://alessio-olivieri.github.io/}{Compared MS-TCN and bidirectional GRU architectures for frame-level segmentation; best reported macro-F1: \textbf{0.83}.}
-\proj{Real-Time Fire Detection}{https://github.com/ami-sc/fire-detection}{Optimized a surveillance-camera detection pipeline with NumPy and background subtraction from \textbf{0.1 to 60 FPS} in project benchmarks.}
-\proj{LLM-to-SQL Assistant}{https://github.com/Alessio-Olivieri/chatbot}{Built a Streamlit application translating natural-language questions into SQL queries using Llama models.}
-\proj{Parallel Neural Network}{https://github.com/tintando/multiprocessing-NN}{Built an MLP in C/Pthreads and CUDA, reporting about \textbf{10$\times$ speedup} on 10 CPU cores.}
-\proj{Other software/data projects}{https://github.com/Alessio-Olivieri}{WasaPhoto RESTful social platform (Go, Vue, SQLite, Docker) and ingredient-network analysis of over 6,000 scraped recipes.}
-\section{Technical Skills}
-\textbf{Programming:} Python, C, Java, Go, JavaScript, SQL, R; PyTorch, NumPy, CUDA, Pthreads.\\
-\textbf{Tools \& domains:} Linux, Docker, Git, Android, Bluetooth, NCCL/MSCCLang, ML evaluation, computer vision, distributed systems.\\
-\textbf{Languages:} English (C2), Italian (C2), Spanish (A2), Polish (A2).
+\setlength{\columnsep}{0.24in}
+\begin{multicols}{2}
+\project{Vision Transformer Pruning via Mechanistic Interpretability}{\sublink{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer}{code} | \sublink{https://github.com/Alessio-Olivieri/automatic-circuit-discovery-for-vision-transformer/blob/main/presentation.pdf}{slides}}
+\begin{itemize}
+\item Implemented ACDC-style causal analysis and activation patching in \textbf{PyTorch} to identify redundant components in a ViT.
+\item Pruned \textbf{85\% of attention heads and 94\% of the computation graph}; retrained the sparse architecture from scratch, achieving \textbf{2$\times$ faster CPU inference} with a \textbf{9\% accuracy drop}.
+\end{itemize}
+
+\project{NCCL Swing Collective Algorithm -- Bachelor's Thesis}{\sublink{https://github.com/Alessio-Olivieri/msccl-tools}{code}}
+\begin{itemize}
+\item Implemented a GPU collective-communication algorithm using \textbf{NCCL / MSCCLang} and benchmarked multi-GPU execution, including on the \textbf{Leonardo supercomputer}.
+\item Measured speedups averaging \textbf{50\%} and reaching \textbf{200\%} in tested torus-network configurations.
+\end{itemize}
+
+\project{Encrypted Network Traffic Classification -- Research}{\sublink{https://github.com/Alessio-Olivieri/TFE-GNN/tree/public-release}{code}}
+\begin{itemize}
+\item Evaluated graph-based ML with \textbf{PyTorch Geometric} on ISCX-VPN: \textbf{31 captures, 1,674 eligible samples, 6 classes}; used flow-disjoint splits, randomized/header-only ablations, and \textbf{3 seeds}.
+\item Real-input baseline: \textbf{92.53\% $\pm$ 1.51 accuracy}, macro-F1 \textbf{0.9168 $\pm$ 0.0165}; randomized: \textbf{73.60\% $\pm$ 14.95}; header-only: \textbf{79.33\% $\pm$ 8.62}. Audited capture provenance and documented why capture-independent six-class validation was unavailable.
+\end{itemize}
+
+\project{Gadgetbridge / Samsung Gear S3 Android--Tizen Support}{\sublink{https://github.com/Alessio-Olivieri/gadgetbridge-gear-s3}{code}}
+\begin{itemize}
+\item Independently built Bluetooth / Samsung Accessory Protocol integration for the Gear S3: phone notifications, replies, contacts, reconnect handling and action-ID stability.
+\item Debugged traffic and Android lifecycle failures on physical devices; implemented automated regression tests (\textbf{65 plus 12 additional tests} passed in the recorded validation).
+\end{itemize}
+\columnbreak
+
+\project{Video Action Segmentation}{University team project}
+\begin{itemize}
+\item Compared \textbf{MS-TCN, BiGRU and MS-CBiGRU} for frame-level action labeling; best \textbf{macro-F1 $\approx$ 0.83} and \textbf{Jaccard $\approx$ 0.71}.
+\end{itemize}
+
+\project{Parallel Multi-Layer Perceptron (MLP)}{\sublink{https://github.com/tintando/multiprocessing-NN}{code}}
+\begin{itemize}
+\item Built an MLP from scratch in \textbf{C/Pthreads}; measured approximately \textbf{1,000\% speedup with 10 CPU cores}. Implemented a \textbf{CUDA} version for parallel execution.
+\end{itemize}
+
+\project{Forest Surveillance: Real-Time AI Fire Detection -- 30L}{\sublink{https://github.com/ami-sc/fire-detection}{code} | \sublink{https://github.com/ami-sc/fire-detection/blob/main/reports/Technical_Report.pdf}{report}}
+\begin{itemize}
+\item Rewrote video processing in \textbf{NumPy}, improving throughput from \textbf{0.1 FPS to 60 FPS}; improved reported detection accuracy to \textbf{95\%} using background subtraction.
+\end{itemize}
+
+\project{WasaPhoto -- Full-Stack Social Platform -- 30L}{\sublink{https://github.com/Alessio-Olivieri/WasaPhoto}{code}}
+\begin{itemize}
+\item Designed frontend, backend and database (\textbf{Go, Vue.js, SQLite, Docker}); built a \textbf{REST API with OpenAPI} for posts, follows and bans.
+\end{itemize}
+
+\project{Ingredients / Recipe Network Analysis}{\sublink{https://github.com/Alessio-Olivieri/GialloZafferano-Scraping}{code} | \sublink{https://github.com/Alessio-Olivieri/GialloZafferano-Scraping/blob/main/giallozafferanodataframe.RData}{data}}
+\begin{itemize}
+\item Scraped \textbf{6,000+ recipes} from Giallo Zafferano; analyzed ingredient co-occurrence networks and identified frequently used ingredients.
+\end{itemize}
+
+\project{AI Orders Chatbot / Natural Language to SQL}{\sublink{https://github.com/Alessio-Olivieri/chatbot}{code} | \sublink{https://chateau.streamlit.app/}{demo}}
+\begin{itemize}
+\item Used prompt engineering with \textbf{Llama 8B / 70B} to turn user questions into \textbf{SQL queries}; deployed the interface with \textbf{Streamlit}.
+\end{itemize}
+\end{multicols}
+\vspace{-6pt}
+\section{Experience}
+\experience{Mathematics Tutor -- Linear Algebra, Sapienza University of Rome}{Sep 2025 -- Feb 2026}
+Held supplementary Linear Algebra classes in parallel with \sublink{https://corsidilaurea.uniroma1.it/it/lecturer/0ab860a416b8b37f38529f8f7cd0e5cf67a5214ad60e04af6ba7c3b6}{Professor Max Tschaikowski's} course, supporting BSc Applied Computer Science \& Artificial Intelligence (ACSAI) students.\\[1pt]
+\experience{Programming Tutor}{Nov 2023 -- Jan 2024}
+Tutored engineering, AI, statistics and economics students; improved learning materials and relayed feedback to department heads.\\[1pt]
+\experience{Plum Juice -- Technical Writer \& Team Member}{Sep 2024 -- Present}
+Wrote technical articles and managed social media (\sublink{https://plum-juice-project.github.io/plum-io/}{website}).
+\section{Skills}
+\textbf{Programming:} Java, JavaScript, Python, Go, SQL, C, RISC-V, R; PyTorch, NumPy, CUDA, Pthreads, Docker, Git, Linux.\\
+\textbf{Problem solving:} Scored \textbf{30L/30} in the Python exam featuring \textbf{12 challenging LeetCode-style problems}.\\
+\textbf{Languages:} Italian (C2), English (C2), Spanish (A2), Polish (A2).
 \end{document}
