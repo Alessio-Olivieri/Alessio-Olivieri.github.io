@@ -4,10 +4,11 @@ A lightweight static GitHub Pages site. No frontend framework, JavaScript bundle
 
 ## Pages
 
-- `index.html`: introduction, three recent project previews, biography and contact.
+- `index.html`: introduction, selected work, ongoing funded research and other professional experience, biography, contact and QR sharing.
 - `projects.html`: curated project index, personal work separated from public collaborations, and a collapsible selection of smaller projects.
 - `projects/*.html`: five case studies with results, contribution, experimental context, figures and source links.
-- `cv.pdf` / `cv.tex`: the existing résumé and its LaTeX source. All “View CV” links open the PDF directly.
+- `cv.pdf` / `cv.tex`: the one-page résumé and its LaTeX source (including the ongoing Sapienza research scholarship). All “View CV” links open the PDF directly.
+- `assets/qr-portfolio.svg` and `assets/qr-cv.svg`: self-hosted, offline-capable QR codes for the canonical portfolio and CV URLs; `assets/share-qr.js` switches them in the bilingual homepage footer dialog.
 
 Serve locally with `python3 -m http.server 8000`. GitHub Pages serves the files in the repository. The existing CV workflow only runs when its LaTeX source or workflow changes.
 
@@ -36,6 +37,6 @@ The supplied slide decks are not republished in full. Figure captions identify t
 
 ## English / Italian
 
-English is the default at the existing URLs. A paired EN/IT control appears on every page; `/it/` contains the complete Italian version. Internal navigation stays in the selected language, and the switch opens the equivalent page. No browser-language detection or automatic redirect overrides the English default. The PDF résumé is currently English and is labeled `CV (EN)` on Italian pages.
+English is the default at the existing URLs. A paired EN/IT control appears on every page; `/it/` contains the complete Italian version. Internal navigation stays in the selected language, and the switch opens the equivalent page. No browser-language detection or automatic redirect overrides the English default. The PDF résumé is currently English and is labeled `CV (EN)` on Italian pages. The homepage experience section and QR dialog are localized in `locales/it.json`.
 
 Edit English content in the original HTML files and translations in `locales/it.json`, then run `python3 tools/build_translations.py`. This also maintains canonical and `hreflang` links (`en`, `it`, `x-default`). Chart translations are in `locales/charts.it.json`; `python3 tools/render_figures.py` generates both language versions from identical numeric data. Original presentation images are preserved and have translated captions and alternative text.
