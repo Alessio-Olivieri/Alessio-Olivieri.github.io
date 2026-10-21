@@ -20,7 +20,7 @@
 <a class="skip-link" href="#main">Vai al contenuto</a>
 <div class="wrap">
 <header class="nav"><a class="logo" href="/it/index.html">AO<span>.</span></a>
-<nav class="navlinks" aria-label="Navigazione principale"><a href="/it/projects.html">Progetti</a><a class="about-nav" href="#about">Chi sono</a><a href="/cv.pdf">CV (EN)</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a><span class="language-switch" role="group" aria-label="Lingua"><a href="/" lang="en" hreflang="en" aria-label="English" title="English">EN</a><a href="/it/" lang="it" hreflang="it" aria-label="Italiano" title="Italiano" aria-current="true">IT</a></span></nav>
+<nav class="navlinks" aria-label="Navigazione principale"><a href="/it/projects.html">Progetti</a><a class="experience-nav" href="#experience">Esperienze</a><a class="about-nav" href="#about">Chi sono</a><a href="/cv.pdf">CV (EN)</a><a class="github-nav" href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub ↗</a><span class="language-switch" role="group" aria-label="Lingua"><a href="/" lang="en" hreflang="en" aria-label="English" title="English">EN</a><a href="/it/" lang="it" hreflang="it" aria-label="Italiano" title="Italiano" aria-current="true">IT</a></span></nav>
 </header>
 <main id="main">
 <section class="hero">
@@ -63,6 +63,30 @@
 </div>
 <p class="section-intro">Scopri anche <a class="text-link" href="/it/projects/vision-transformer.html">il pruning dei Vision Transformer</a>, <a class="text-link" href="/it/projects/swing-allreduce.html">le comunicazioni collettive su GPU</a> e <a class="text-link" href="/it/projects.html#collaborations">i progetti in collaborazione</a>.</p>
 </section>
+<section class="section experience-section" id="experience">
+<div class="section-head"><div><span class="kicker">Esperienze</span><h2>Esperienze di ricerca e professionali.</h2></div></div>
+<div class="experience-list">
+<article class="experience-entry">
+<div class="experience-date"><time datetime="2026-04">Apr 2026 – Oggi</time><span class="experience-current">In corso</span></div>
+<div><h3>Assistente alla ricerca — Machine Learning e Sicurezza Informatica</h3>
+<p class="experience-org">Sapienza Università di Roma · Borsa di ricerca retribuita (BDR 3/2025)</p>
+<p>Collaboro con il prof. Angelo Spognardi e Federica Bianchi alla classificazione del traffico di rete cifrato. Ho reimplementato una rete neurale a grafi in PyTorch Geometric, sviluppato la preparazione dei PCAP e progettato esperimenti di ablazione del payload e controlli sulla provenienza dei dati per capire cosa apprende effettivamente il classificatore.</p>
+<a class="text-link" href="/it/projects/encrypted-traffic.html">Scopri la ricerca ↗</a></div>
+</article>
+<article class="experience-entry">
+<div class="experience-date"><time datetime="2024-09">Set 2024 – Oggi</time></div>
+<div><h3>Redattore tecnico e membro del team — Plum Juice</h3>
+<p class="experience-org">Collaborazione open source in HPC</p>
+<p>Ho pubblicato documentazione tecnica di un cluster Raspberry Pi a 32 core, descrivendo l’integrazione di MPI/Slurm, i problemi incontrati e le scelte di scalabilità.</p>
+<a class="text-link" href="https://plum-juice-project.github.io/plum-io/">Blog del progetto ↗</a></div>
+</article>
+<article class="experience-entry">
+<div class="experience-date"><time datetime="2025-09">Set 2025 – Feb 2026</time></div>
+<div><h3>Tutor di Algebra Lineare — Sapienza Università di Roma</h3>
+<p>Ho svolto lezioni integrative per la laurea triennale in Applied Computer Science &amp; AI.</p></div>
+</article>
+</div>
+</section>
 <section id="about" class="section">
 <div class="about">
 <div><span class="kicker">Chi sono</span>
@@ -84,7 +108,18 @@
 <div class="actions"><a class="button" href="mailto:olivieri.1973323@studenti.uniroma1.it">Scrivimi ↗</a><a class="button ghost" href="https://www.linkedin.com/in/alessio-olivieri/" target="_blank" rel="noopener">LinkedIn ↗</a><a class="button ghost" href="/cv.pdf">CV (EN) ↗</a></div>
 </section>
 </main>
-<footer><span>© 2026 Alessio Olivieri</span><span><a href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub</a> · <a href="/cv.pdf">CV (EN)</a> · Un sito statico e leggero</span></footer>
+<footer><span>© 2026 Alessio Olivieri</span><span><a href="https://github.com/Alessio-Olivieri" target="_blank" rel="noopener">GitHub</a> · <a href="/cv.pdf">CV (EN)</a> · <button class="footer-qr-trigger" type="button" data-qr-open>Mostra QR ◫</button> · Un sito statico e leggero</span></footer>
 </div>
+<dialog id="share-qr-dialog" class="qr-dialog" aria-labelledby="share-qr-title" aria-describedby="share-qr-intro">
+<div class="qr-modal">
+<div class="qr-modal-head"><h2 id="share-qr-title">Condividi tramite QR</h2><button type="button" class="qr-close" data-qr-close aria-label="Chiudi">×</button></div>
+<p id="share-qr-intro">Mostra questo codice per aprire il portfolio o il CV sul telefono.</p>
+<div class="qr-tabs" role="group" aria-label="Destinazione del codice QR"><button type="button" data-qr-target="portfolio" aria-pressed="true">Portfolio</button><button type="button" data-qr-target="cv" aria-pressed="false">CV (PDF)</button></div>
+<div class="qr-image-wrap"><img id="share-qr-image" src="/assets/qr-portfolio.svg" width="296" height="296" alt="Codice QR del portfolio di Alessio Olivieri"></div>
+<a id="share-qr-url" class="qr-url" href="https://alessio-olivieri.github.io/" target="_blank" rel="noopener">alessio-olivieri.github.io/</a>
+<div class="qr-actions"><button type="button" class="button" data-qr-copy>Copia link</button><a class="button ghost" id="share-qr-download" href="/assets/qr-portfolio.svg" download="alessio-portfolio-qr.svg">Scarica QR ↓</a></div>
+<p class="qr-status" data-qr-status aria-live="polite"></p>
+</div></dialog>
+<script src="/assets/share-qr.js" defer></script>
 </body>
 </html>
