@@ -1,7 +1,10 @@
-% Alessio Olivieri - one-page engineering resume, revised 12 October 2026.
+% Alessio Olivieri - one-page engineering resume, revised 21 October 2026.
 % Compile: latexmk -pdf cv.tex (standard TeX Live / Overleaf).
 % Six selected project entries; GPU thesis consolidated into Education.
 % Reverse chronological order within each dated section, ongoing roles first.
+% Sapienza research scholarship BDR 3/2025: awarded March 2026, active since
+% April 2026 with Prof. Angelo Spognardi and Federica Bianchi. Ongoing work;
+% do not conflate it with a conventional salaried employment contract.
 % Public team projects are separate from personal adaptations and forks.
 %
 % Evidence notes (not printed):
@@ -31,7 +34,7 @@
 % Yangshun / Tech Interview Handbook: techinterviewhandbook.org/resume/
 %
 \documentclass[11pt,a4paper]{article}
-\usepackage[left=16mm,right=16mm,top=13mm,bottom=13mm]{geometry}
+\usepackage[left=16mm,right=16mm,top=12mm,bottom=12mm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{helvet}
@@ -58,15 +61,15 @@
 \hyphenpenalty=10000
 \exhyphenpenalty=10000
 \raggedright
-\AtBeginDocument{\fontsize{11}{14}\selectfont}
+\AtBeginDocument{\fontsize{10.5}{13}\selectfont}
 \setlist[itemize]{leftmargin=12pt,label=\textbullet,
   itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt}
 \newcommand{\cvsection}[1]{%
-  \par\addvspace{9pt}\needspace{42pt}%
+  \par\addvspace{7pt}\needspace{40pt}%
   {\fontsize{11.2}{14}\selectfont\bfseries\MakeUppercase{#1}}\par
   \vspace{2pt}{\color{linecolor}\hrule height .4pt}\vspace{4pt}}
 \newcommand{\entry}[2]{%
-  \par\addvspace{5pt}\needspace{38pt}%
+  \par\addvspace{4pt}\needspace{36pt}%
   {\bfseries #1}\hfill{\fontsize{9.6}{12}\selectfont\color{muted}\mbox{#2}}\par}
 \newcommand{\project}[3]{%
   \entry{\href{#1}{#2}}{#3}}
@@ -95,6 +98,9 @@ Sapienza University of Rome \enspace|\enspace Final grade: \textbf{101/110}.\par
 \href{https://github.com/Alessio-Olivieri/msccl-tools}{Enabled Swing AllReduce on GPUs with MSCCLang/NCCL; benchmarked on Leonardo.}
 
 \cvsection{Experience}
+\entry{Research Assistant --- Machine Learning \& Cybersecurity}{Apr 2026 -- Present}
+\textbf{Sapienza University of Rome} --- funded research scholarship (BDR 3/2025), with Prof. Angelo Spognardi and Federica Bianchi. Reimplemented TFE-GNN in PyTorch Geometric; prepared PCAP datasets and designed encrypted-payload ablations and provenance checks to assess model reliability.
+
 \entry{Technical Writer \& Team Member -- \href{https://plum-juice-project.github.io/plum-io/}{Plum Juice}}{Sep 2024 -- Present}
 Published technical documentation of a \textbf{32-core Raspberry Pi cluster}, covering MPI/Slurm integration, failures and scaling trade-offs.
 
